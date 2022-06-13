@@ -49,22 +49,7 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $transportationsLogistic = $this->introductionTypeRepository->getByColumn('transportations-logistics', 'short_name');
-        $transportations = $this->introductionTypeRepository->getByColumn('transportation', 'short_name');
-        $services = $this->introductionTypeRepository->getByColumn('services', 'short_name');
-        $aboutUs = $this->introductionTypeRepository->getByColumn('about-us', 'short_name');
-        $growths = $this->introductionTypeRepository->getByColumn('growth', 'short_name');
-        $questions = $this->introductionTypeRepository->getByColumn('frequently-ask-questions', 'short_name');
-        $whyDepot = $this->introductionTypeRepository->getByColumn('why-depot', 'short_name');
-        return view('frontend.sites.index', [
-            'transportationsLogistic' => $transportationsLogistic->introduction,
-            'transportations' => $transportations->introductions,
-            'services' => $services->introductions,
-            'aboutUs' => $aboutUs->introduction,
-            'growths' => $growths->introductions,
-            'questions' => $questions->introductions,
-            'whyDepot' => $whyDepot->introduction,
-        ]);
+        return view('frontend.sites.index', []);
     }
 
     public function page(Request $request, $slug)
@@ -133,7 +118,6 @@ class SiteController extends Controller
 
     public function contactUs(Request $request)
     {
-        $request->session()->flash('success', 'We will reply you soon. Thanks!');
-        return redirect()->route('frontend.sites.index');
+        return view('frontend.sites.contact');
     }
 }
