@@ -2,66 +2,147 @@
     $route = request()->route();
 @endphp
 
-<div class="site-wrap" id="home-section">
-
-    <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close mt-3">
-                <span class="icon-close2 js-menu-toggle"></span>
-            </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-    </div>
-
-
-    <div class="top-bar">
+<!--================Header Menu Area =================-->
+<header class="header_area">
+    <div class="top_menu">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span> <span
-                            class="d-none d-md-inline-block">info@brainstormt.com</span></a>
-                    <span class="mx-md-2 d-inline-block"></span>
-                    <a href="#" class=""><span class="mr-2  icon-phone"></span> <span class="d-none d-md-inline-block">+60 128720270</span></a>
-
+                <div class="col-lg-7">
+                    <div class="float-left">
+                        <p>Phone: +01 256 25 235</p>
+                        <p>email: info@eiser.com</p>
+                    </div>
                 </div>
-
+                <div class="col-lg-5">
+                    <div class="float-right">
+                        <ul class="right_side">
+                            <li>
+                                <a href="cart.html">
+                                    gift card
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tracking.html">
+                                    track order
+                                </a>
+                            </li>
+                            <li>
+                                <a href="contact.html">
+                                    Contact Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{!! route('frontend.sites.change-language', ['en']) !!}">{{ __('message.english') }}</a>
+                                <a href="{!! route('frontend.sites.change-language', ['zh-CN']) !!}">{{ __('Chinese') }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
-
-    <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
-
+    <div class="main_menu">
         <div class="container">
-            <div class="row align-items-center position-relative">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <a class="navbar-brand logo_h" href="index.html">
+                    <img src="img/logo.png" alt=""/>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
+                    <div class="row w-100 mr-0">
+                        <div class="col-lg-7 pr-0">
+                            <ul class="nav navbar-nav center_nav pull-right">
+                                <li class="nav-item {{ $route->named('frontend.sites.index') ? 'active' : '' }}"><a href="{{ route('frontend.sites.index') }}" class="nav-link">Home</a></li>
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">Shop</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="category.html">Shop Category</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="single-product.html">Product Details</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="checkout.html">Product Checkout</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="cart.html">Shopping Cart</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">Blog</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="blog.html">Blog</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="single-blog.html">Blog Details</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">Pages</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="tracking.html">Tracking</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="elements.html">Elements</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
 
+                        <div class="col-lg-5 pr-0">
+                            <ul class="nav navbar-nav navbar-right right_nav pull-right">
+                                <li class="nav-item">
+                                    <a href="#" class="icons">
+                                        <i class="ti-search" aria-hidden="true"></i>
+                                    </a>
+                                </li>
 
-                <div class="site-logo">
-                    <a href="/" class="text-black"><span class="text-primary">{{ env('APP_NAME') }}</a>
+                                <li class="nav-item">
+                                    <a href="#" class="icons">
+                                        <i class="ti-shopping-cart"></i>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="icons">
+                                        <i class="ti-user" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="icons">
+                                        <i class="ti-heart" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col-12">
-                    <nav class="site-navigation text-right ml-auto " role="navigation">
-
-                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                            <li><a href="{{ $route->named('frontend.sites.index') ? '' : route('frontend.sites.index') }}#home-section" class="nav-link">Home</a></li>
-                            <li><a href="{{ $route->named('frontend.sites.index') ? '' : route('frontend.sites.index') }}#services-section" class="nav-link">Services</a></li>
-
-                            <li>
-                                <a href="{{ $route->named('frontend.sites.index') ? '' : route('frontend.sites.index') }}#about-section" class="nav-link">About Us</a>
-
-                            </li>
-                            <li><a href="{{ $route->named('frontend.sites.index') ? '' : route('frontend.sites.index') }}#why-us-section" class="nav-link">Why Us</a></li>
-                            <li><a href="{{ $route->named('frontend.sites.index') ? '' : route('frontend.sites.index') }}#contact-section" class="nav-link">Contact</a></li>
-                        </ul>
-                    </nav>
-
-                </div>
-
-                <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
-
-            </div>
+            </nav>
         </div>
-
-    </header>
-</div>
+    </div>
+</header>
+<!--================Header Menu Area =================-->

@@ -15,9 +15,9 @@ class CategoryRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'id' => ['column' => 'introduction_types.id', 'operator' => '='],
-        'title_english' => ['column' => 'introductions.title_english', 'operator' => 'like'],
-        'title_chinese' => ['column' => 'introductions.title_chinese', 'operator' => 'like'],
+        'id' => ['column' => 'categories.id', 'operator' => '='],
+        'name_english' => ['column' => 'categories.name_english', 'operator' => 'like'],
+        'name_chinese' => ['column' => 'categories.name_chinese', 'operator' => 'like'],
     ];
 
     public function __construct(Category $model)
