@@ -72,6 +72,9 @@ class Product extends Model
             'description_chinese' => 'required|max:255',
             'image' => 'required|max:255',
             'price' => 'required|numeric',
+            'type' => 'required',
+            'package' => 'required',
+            'stock_status' => 'required',
         ];
     }
 

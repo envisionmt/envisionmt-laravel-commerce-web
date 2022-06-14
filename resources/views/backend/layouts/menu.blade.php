@@ -50,6 +50,13 @@
             <p>Categories</p>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a href="{{ route('backend.products.index') }}" class="nav-link {{ $route->named('backend.products*') ? 'active' : '' }}">
+            <i class="nav-icon far fa-window-restore"></i>
+            <p>Products</p>
+        </a>
+    </li>
 @endif
 
 

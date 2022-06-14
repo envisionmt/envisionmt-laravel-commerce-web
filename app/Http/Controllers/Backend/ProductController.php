@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Products\ProductCreateRequest;
 use App\Http\Requests\Backend\Products\ProductUpdateRequest;
+use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
@@ -21,16 +22,20 @@ class ProductController extends Controller
      * Repository
      *
      * @var ProductRepository
+     * @var CategoryRepository
      */
     private $productRepository;
+    private $categoryRepository;
 
     /**
      * Constructor.
      * @param ProductRepository $productRepository
+     * @param CategoryRepository $categoryRepository
      */
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository)
     {
         $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -60,7 +65,8 @@ class ProductController extends Controller
     public function create()
     {
         try {
-            return view('backend.products.create');
+            $categories = $this->categoryRepository->all();
+            return view('backend.products.create', compact('categories'));
         } catch (Exception $exception) {
             Log::error($exception);
             abort(500);
@@ -130,9 +136,10 @@ class ProductController extends Controller
     public function edit(Request $request, string $id)
     {
         try {
+            $categories = $this->categoryRepository->all();
             $item = $this->productRepository->getById($id);
 
-            return view('backend.products.edit', compact('item'));
+            return view('backend.products.edit', compact('item', 'categories'));
         } catch (ModelNotFoundException $e) {
             $request->session()->flash('error', 'Sorry, the product you are looking for could not be found.');
         } catch (Exception $exception) {
