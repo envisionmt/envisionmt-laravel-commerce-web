@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->uuid('category_id');
             $table->string('name_english');
             $table->string('name_chinese');
-            $table->text('description_english');
-            $table->text('description_chinese');
+            $table->text('content_english');
+            $table->text('content_chinese');
             $table->string('image');
             $table->unsignedDouble('price');
             $table->unsignedTinyInteger('type');

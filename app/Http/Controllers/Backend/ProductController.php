@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Products\ProductCreateRequest;
 use App\Http\Requests\Backend\Products\ProductUpdateRequest;
+use App\Models\Product;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
 use Exception;
@@ -66,7 +67,9 @@ class ProductController extends Controller
     {
         try {
             $categories = $this->categoryRepository->all();
-            return view('backend.products.create', compact('categories'));
+            $stockStatusNames = Product::$stockStatusNames;
+            $typeNames = Product::$typeNames;
+            return view('backend.products.create', compact('categories', 'stockStatusNames', 'typeNames'));
         } catch (Exception $exception) {
             Log::error($exception);
             abort(500);
@@ -137,9 +140,11 @@ class ProductController extends Controller
     {
         try {
             $categories = $this->categoryRepository->all();
+            $stockStatusNames = Product::$stockStatusNames;
+            $typeNames = Product::$typeNames;
             $item = $this->productRepository->getById($id);
 
-            return view('backend.products.edit', compact('item', 'categories'));
+            return view('backend.products.edit', compact('item', 'categories', 'stockStatusNames', 'typeNames'));
         } catch (ModelNotFoundException $e) {
             $request->session()->flash('error', 'Sorry, the product you are looking for could not be found.');
         } catch (Exception $exception) {

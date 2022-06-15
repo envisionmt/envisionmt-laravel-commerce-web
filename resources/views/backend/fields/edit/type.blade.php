@@ -1,7 +1,13 @@
 <div class="form-group">
     <label for="type">Type</label>
-    <input type="text" name="type" class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}"
-           id="type" placeholder="Enter Type" value="{{ old('type', $item->type) }}">
+    <select class="form-control select-two {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="stock-status">
+        @foreach($typeNames as $key => $typeName)
+            <option value="{{ $key }}" {{ old('ward', $item->type) === $key ? 'selected' : '' }}>
+                {{ $typeName }}
+            </option>
+        @endforeach
+    </select>
+
     @if ($errors->has('type'))
         <span class="error invalid-feedback">{{ $errors->first('type') }}</span>
     @endif

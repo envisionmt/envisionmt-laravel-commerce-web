@@ -1,3 +1,8 @@
+@push('after-scripts')
+    <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/product.js') }}"></script>
+@endpush
+
 @extends('backend.layouts.app')
 
 @section('content')
@@ -38,10 +43,10 @@
                                                 @include('backend.fields.edit.name-chinese')
                                             </div>
                                             <div class="col-md-12">
-                                                @include('backend.fields.edit.description-english')
+                                                @include('backend.fields.edit.content-english')
                                             </div>
                                             <div class="col-md-12">
-                                                @include('backend.fields.edit.description-chinese')
+                                                @include('backend.fields.edit.content-chinese')
                                             </div>
                                             <div class="col-md-12">
                                                 @include('backend.fields.edit.price')

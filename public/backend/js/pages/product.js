@@ -6,7 +6,8 @@ function initCkeditor() {
     };
 
     if (typeof(CKEDITOR) !== "undefined") {
-        CKEDITOR.replace('content', config);
+        CKEDITOR.replace('content-english', config);
+        CKEDITOR.replace('content-chinese', config);
     }
 }
 

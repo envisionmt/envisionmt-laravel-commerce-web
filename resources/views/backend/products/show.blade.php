@@ -46,21 +46,25 @@
                                             </p>
                                             <p>
                                                 <strong>Type:</strong>
-                                                {{ $item->type }}
+                                                {{ $item->type_name }}
                                             </p>
                                             <p>
                                                 <strong>Package:</strong>
                                                 {{ $item->package }}
                                             </p>
+                                            <p>
+                                                <strong>Stock Status:</strong>
+                                                {{ $item->stock_status_name }}
+                                            </p>
                                         </div>
                                         <div class="col-md-4">
                                             <p>
-                                                <strong>Description English:</strong>
-                                                {{ $item->description_english }}
+                                                <strong>Content English:</strong>
+                                                {!! $item->content_english !!}
                                             </p>
                                             <p>
-                                                <strong>Description Chinese:</strong>
-                                                {{ $item->description_chinese }}
+                                                <strong>Content Chinese:</strong>
+                                                {!! $item->content_chinese !!}
                                             </p>
                                             <p>
                                                 <strong>Created at:</strong>
