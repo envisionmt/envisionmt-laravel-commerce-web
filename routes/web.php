@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'backend.',
     require 'web/backend/categories.php';
     require 'web/backend/products.php';
     require 'web/backend/deliveries.php';
+    require 'web/backend/order-payments.php';
 
     // Library
     require 'web/backend/file-upload.php';

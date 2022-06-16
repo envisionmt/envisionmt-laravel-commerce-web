@@ -64,6 +64,13 @@
             <p>Deliveries</p>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a href="{{ route('backend.order-payments.index') }}" class="nav-link {{ $route->named('backend.order-payments*') ? 'active' : '' }}">
+            <i class="nav-icon far fa-window-restore"></i>
+            <p>Order Payments</p>
+        </a>
+    </li>
 @endif
 
 
