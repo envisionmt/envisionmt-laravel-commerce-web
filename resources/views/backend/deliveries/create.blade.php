@@ -25,10 +25,10 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                @include('backend.fields.create.name-english')
+                                                @include('backend.fields.create.name')
                                             </div>
                                             <div class="col-md-12">
-                                                @include('backend.fields.create.name-chinese')
+                                                @include('backend.fields.create.type')
                                             </div>
                                         </div>
                                     </div>

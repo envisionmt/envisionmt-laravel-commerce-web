@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Deliveries\DeliveryCreateRequest;
 use App\Http\Requests\Backend\Deliveries\DeliveryUpdateRequest;
+use App\Models\Delivery;
 use App\Repositories\DeliveryRepository;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
@@ -61,7 +62,8 @@ class DeliveryController extends Controller
     public function create()
     {
         try {
-            return view('backend.deliveries.create');
+            $typeNames = Delivery::$typeNames;
+            return view('backend.deliveries.create', compact('typeNames'));
         } catch (Exception $exception) {
             Log::error($exception);
             abort(500);
@@ -132,8 +134,8 @@ class DeliveryController extends Controller
     {
         try {
             $item = $this->deliveryRepository->getById($id);
-
-            return view('backend.deliveries.edit', compact('item'));
+            $typeNames = Delivery::$typeNames;
+            return view('backend.deliveries.edit', compact('item', 'typeNames'));
         } catch (ModelNotFoundException $e) {
             $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
         } catch (Exception $exception) {

@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Introduction Type Information</h1>
+                    <h1 class="m-0 text-dark">Delivery Information</h1>
                 </div>
                 <div class="col-sm-6 text-right">
                     <a href="{{ route('backend.introduction-types.index') }}" class="btn btn-default mr-2">Back</a>
@@ -25,7 +25,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Introduction Type</h3>
+                            <h3 class="card-title">Delivery</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -33,12 +33,12 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <p>
-                                                <strong>Name English:</strong>
-                                                {{ $item->name_english }}
+                                                <strong>Name:</strong>
+                                                {{ $item->name }}
                                             </p>
                                             <p>
-                                                <strong>Name Chinese:</strong>
-                                                {{ $item->name_chinese }}
+                                                <strong>Type:</strong>
+                                                {{ $item->type_name }}
                                             </p>
                                         </div>
                                         <div class="col-md-4">
