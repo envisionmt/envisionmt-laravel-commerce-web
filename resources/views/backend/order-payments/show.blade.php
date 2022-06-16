@@ -103,7 +103,7 @@
                                             </p>
                                             <p>
                                                 <strong>Shipping Status:</strong>
-                                                {{ $item->shipping_status }}
+                                                {{ $item->shipping_status_name }}
                                             </p>
                                             <p>
                                                 <strong>Shipping Destination:</strong>
