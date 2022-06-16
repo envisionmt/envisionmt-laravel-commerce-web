@@ -170,7 +170,7 @@ class OrderPayment extends Model
             return null;
         }
 
-        return self::$statusNames[$this->shipping_status];
+        return self::$shippingStatusNames[$this->shipping_status];
     }
 
 }
