@@ -20,7 +20,6 @@ class OrderPayment extends Model
 {
     use Uuids;
     use HasFactory;
-    use Sluggable;
     use Rules;
 
     const ALIPAY_CHANNEL = 1;
@@ -135,6 +134,11 @@ class OrderPayment extends Model
     public function paymentMethod()
     {
         return $this->belongsTo(Delivery::class, 'payment_method_id');
+    }
+
+    public function products()
+    {
+        return $this->belongstoMany(Product::class);
     }
 
     public static $statusNames = [
