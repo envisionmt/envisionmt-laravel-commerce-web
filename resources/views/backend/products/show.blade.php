@@ -41,6 +41,10 @@
                                                 {{ $item->name_english }}
                                             </p>
                                             <p>
+                                                <strong>Name Chinese:</strong>
+                                                {{ $item->name_chinese }}
+                                            </p>
+                                            <p>
                                                 <strong>Price:</strong>
                                                 {{ $item->price }}
                                             </p>
