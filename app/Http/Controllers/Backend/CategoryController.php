@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Categories\CategoryCreateRequest;
 use App\Http\Requests\Backend\Categories\CategoryUpdateRequest;
 use App\Repositories\CategoryRepository;
 use Exception;
@@ -70,11 +71,11 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param CategoryUpdateRequest $request
      *
+     * @param CategoryCreateRequest $request
      * @return RedirectResponse
      */
-    public function store(CategoryUpdateRequest $request)
+    public function store(CategoryCreateRequest $request)
     {
         try {
             $attributes = $request->only(array_keys($this->categoryRepository->makeModel()->rules()));

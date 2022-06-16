@@ -57,6 +57,13 @@
             <p>Products</p>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a href="{{ route('backend.deliveries.index') }}" class="nav-link {{ $route->named('backend.deliveries*') ? 'active' : '' }}">
+            <i class="nav-icon far fa-window-restore"></i>
+            <p>Deliveries</p>
+        </a>
+    </li>
 @endif
 
 
