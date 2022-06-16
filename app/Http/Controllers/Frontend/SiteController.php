@@ -49,7 +49,10 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return view('frontend.sites.index', []);
+        $introduction = $this->introductionTypeRepository->getByColumn('introduction', 'short_name');
+        return view('frontend.sites.index', [
+            'introduction' => $introduction->introduction
+        ]);
     }
 
     public function page(Request $request, $slug)
