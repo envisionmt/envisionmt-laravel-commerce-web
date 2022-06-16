@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->unsignedDouble('price');
             $table->unsignedTinyInteger('type');
-            $table->string('package');
+            $table->string('package')->nullable();
             $table->unsignedTinyInteger('stock_status');
             $table->timestamps();
         });

@@ -86,7 +86,7 @@ class Product extends Model
             'image' => 'required|max:255',
             'price' => 'required|numeric',
             'type' => 'required|in:' . implode(',', array_keys(self::$typeNames)),
-            'package' => 'required',
+            'package' => 'nullable',
             'stock_status' => 'required|in:' . implode(',', array_keys(self::$stockStatusNames)),
 
         ];
