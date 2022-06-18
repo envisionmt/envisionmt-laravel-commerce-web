@@ -64,7 +64,7 @@
                                             </div>
                                         </div>
                                         <div class="product-btm">
-                                            <a href="#" class="d-block">
+                                            <a href="{{ route('frontend.products.show', $item->id) }}" class="d-block">
                                                 <h4>{{ $item->name }}</h4>
                                             </a>
                                             <div class="mt-3">

@@ -7,8 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Repositories\ProductRepository;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 
 class ProductController extends Controller
 {
@@ -39,6 +42,30 @@ class ProductController extends Controller
             Log::error($exception);
             abort(500);
         }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Request $request
+     * @param mixed $id
+     *
+     * @return View|RedirectResponse
+     */
+    public function show(Request $request, $id)
+    {
+        try {
+            $item = $this->productRepository->getById($id);
+
+            return view('frontend.products.show', compact('item'));
+        } catch (ModelNotFoundException $exception) {
+            $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
+        } catch (Exception $exception) {
+            Log::error($exception);
+            $request->session()->flash('error', 'An error occurred while showing the page.');
+        }
+
+        return redirect()->route('frontend.products.index');
     }
 
 }
