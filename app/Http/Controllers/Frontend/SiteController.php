@@ -59,18 +59,22 @@ class SiteController extends Controller
     public function index()
     {
         $introduction = $this->introductionTypeRepository->getByColumn('introduction', 'short_name');
-        $feature = $this->introductionTypeRepository->getByColumn('feature', 'short_name');
-        $services = $this->introductionTypeRepository->getByColumn('services', 'short_name');
-        $saleOff = $this->introductionTypeRepository->getByColumn('sale-off', 'short_name');
+        $featureIntroduction = $this->introductionTypeRepository->getByColumn('feature', 'short_name');
+        $serviceIntroductions = $this->introductionTypeRepository->getByColumn('services', 'short_name');
+        $newProductIntroduction = $this->introductionTypeRepository->getByColumn('new-products', 'short_name');
+        $inspiredProductIntroduction = $this->introductionTypeRepository->getByColumn('inspired-products', 'short_name');
+        $saleOffIntroduction = $this->introductionTypeRepository->getByColumn('sale-off', 'short_name');
         $featuredProducts = $this->productRepository->where('type', Product::NORMAL_TYPE)->get();
         $newProducts = $this->productRepository->where('type', Product::NEW_TYPE)->limit(4)->get();
         $products = $this->productRepository->limit(8)->get();
         $hotProduct = $this->productRepository->where('type', Product::HOT_TYPE)->first();
         return view('frontend.sites.index', [
             'introduction' => $introduction->introduction,
-            'feature' => $feature->introduction,
-            'saleOff' => $saleOff->introduction,
-            'services' => $services->introductions,
+            'featureIntroduction' => $featureIntroduction->introduction,
+            'saleOffIntroduction' => $saleOffIntroduction->introduction,
+            'serviceIntroductions' => $serviceIntroductions->introductions,
+            'newProductIntroduction' => $newProductIntroduction->introduction,
+            'inspiredProductIntroduction' => $inspiredProductIntroduction->introduction,
             'featuredProducts' => $featuredProducts,
             'newProducts' => $newProducts,
             'products' => $products,

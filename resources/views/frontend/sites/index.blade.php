@@ -22,14 +22,14 @@
     <section class="feature-area section_gap_bottom_custom">
         <div class="container">
             <div class="row">
-                @foreach($services as $service)
+                @foreach($serviceIntroductions as $serviceIntroduction)
                     <div class="col-lg-3 col-md-6">
                         <div class="single-feature">
                             <a href="#" class="title">
-                                <i class="{{ $service->sub_title }}"></i>
-                                <h3>{{ $service->title }}</h3>
+                                <i class="{{ $serviceIntroduction->sub_title }}"></i>
+                                <h3>{{ $serviceIntroduction->title }}</h3>
                             </a>
-                            <p>{{ $service->description }}</p>
+                            <p>{{ $serviceIntroduction->description }}</p>
                         </div>
                     </div>
                 @endforeach
@@ -44,8 +44,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="main_title">
-                        <h2><span>{{ $feature->title }}</span></h2>
-                        <p>{{ $feature->sub_title }}</p>
+                        <h2><span>{{ $featureIntroduction->title }}</span></h2>
+                        <p>{{ $featureIntroduction->sub_title }}</p>
                     </div>
                 </div>
             </div>
@@ -86,15 +86,15 @@
     <!--================ End Feature Product Area =================-->
 
     <!--================ Offer Area =================-->
-    <section class="offer_area" style="background-image: url({{ $saleOff->image }})">
+    <section class="offer_area" style="background-image: url({{ $saleOffIntroduction->image }})">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="offset-lg-4 col-lg-6 text-center">
                     <div class="offer_content">
-                        <h3 class="text-uppercase mb-40">{{ $saleOff->title }}</h3>
-                        <h2 class="text-uppercase">{{ $saleOff->sub_title }}</h2>
-                        <a href="{{ $saleOff->link }}" class="main_btn mb-20 mt-5">Discover Now</a>
-                        <p>{{ $saleOff->description }}</p>
+                        <h3 class="text-uppercase mb-40">{{ $saleOffIntroduction->title }}</h3>
+                        <h2 class="text-uppercase">{{ $saleOffIntroduction->sub_title }}</h2>
+                        <a href="{{ $saleOffIntroduction->link }}" class="main_btn mb-20 mt-5">Discover Now</a>
+                        <p>{{ $saleOffIntroduction->description }}</p>
                     </div>
                 </div>
             </div>
@@ -108,8 +108,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="main_title">
-                        <h2><span>new products</span></h2>
-                        <p>Bring called seed first of third give itself now ment</p>
+                        <h2><span>{{ $newProductIntroduction->title }}</span></h2>
+                        <p>{{ $newProductIntroduction->description }}</p>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="new_product">
-                        <h5 class="text-uppercase">collection of 2019</h5>
+                        <h5 class="text-uppercase">collection of 2022</h5>
                         <h3 class="text-uppercase">{{ $hotProduct->name }}</h3>
                         <div class="product-img">
                             <img class="img-fluid" src="{{ $hotProduct->image }}" alt="{{ $hotProduct->name }}"/>
@@ -170,8 +170,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="main_title">
-                        <h2><span>Inspired products</span></h2>
-                        <p>Bring called seed first of third give itself now ment</p>
+                        <h2><span>{{ $inspiredProductIntroduction->title }}</span></h2>
+                        <p>{{ $inspiredProductIntroduction->description }}</p>
                     </div>
                 </div>
             </div>
