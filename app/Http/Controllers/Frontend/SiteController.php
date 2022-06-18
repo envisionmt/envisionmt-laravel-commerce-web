@@ -6,8 +6,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\TrackOrder\TrackOrderRequest;
+use App\Models\Product;
 use App\Repositories\IntroductionTypeRepository;
 use App\Repositories\PageRepository;
+use App\Repositories\ProductRepository;
 use App\Repositories\TrackOrderRepository;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
@@ -26,6 +28,11 @@ class SiteController extends Controller
      */
     private $pageRepository;
     private $introductionTypeRepository;
+    private $productRepository;
+    /**
+     * @var TrackOrderRepository
+     */
+    private $trackOrderRepository;
 
     /**
      * Constructor.
@@ -35,11 +42,13 @@ class SiteController extends Controller
      */
     public function __construct(PageRepository $pageRepository,
                                 IntroductionTypeRepository $introductionTypeRepository,
-                                TrackOrderRepository $trackOrderRepository)
+                                TrackOrderRepository $trackOrderRepository,
+                                ProductRepository $productRepository)
     {
         $this->pageRepository = $pageRepository;
         $this->introductionTypeRepository = $introductionTypeRepository;
         $this->trackOrderRepository = $trackOrderRepository;
+        $this->productRepository = $productRepository;
     }
 
     /**
@@ -50,8 +59,22 @@ class SiteController extends Controller
     public function index()
     {
         $introduction = $this->introductionTypeRepository->getByColumn('introduction', 'short_name');
+        $feature = $this->introductionTypeRepository->getByColumn('feature', 'short_name');
+        $services = $this->introductionTypeRepository->getByColumn('services', 'short_name');
+        $saleOff = $this->introductionTypeRepository->getByColumn('sale-off', 'short_name');
+        $featuredProducts = $this->productRepository->where('type', Product::NORMAL_TYPE)->get();
+        $newProducts = $this->productRepository->where('type', Product::NEW_TYPE)->limit(4)->get();
+        $products = $this->productRepository->limit(8)->get();
+        $hotProduct = $this->productRepository->where('type', Product::HOT_TYPE)->first();
         return view('frontend.sites.index', [
-            'introduction' => $introduction->introduction
+            'introduction' => $introduction->introduction,
+            'feature' => $feature->introduction,
+            'saleOff' => $saleOff->introduction,
+            'services' => $services->introductions,
+            'featuredProducts' => $featuredProducts,
+            'newProducts' => $newProducts,
+            'products' => $products,
+            'hotProduct' => $hotProduct,
         ]);
     }
 
