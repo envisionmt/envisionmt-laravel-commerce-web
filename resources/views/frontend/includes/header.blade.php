@@ -60,23 +60,15 @@
                     <div class="row w-100 mr-0">
                         <div class="col-lg-7 pr-0">
                             <ul class="nav navbar-nav center_nav pull-right">
-                                <li class="nav-item {{ $route->named('frontend.sites.index') ? 'active' : '' }}"><a href="{{ route('frontend.sites.index') }}" class="nav-link">Home</a></li>
-                                <li class="nav-item {{ $route->named('frontend.products.index') ? 'active' : '' }}"><a href="{{ route('frontend.products.index') }}" class="nav-link">Shop</a></li>
-                                <li class="nav-item submenu dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-haspopup="true"
-                                       aria-expanded="false">Pages</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="tracking.html">Tracking</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="elements.html">Elements</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li class="nav-item {{ $route->named('frontend.sites.index') ? 'active' : '' }}"><a
+                                        href="{{ route('frontend.sites.index') }}" class="nav-link">Home</a></li>
+                                <li class="nav-item {{ $route->named('frontend.sites.about') ? 'active' : '' }}"><a
+                                        href="{{ route('frontend.sites.about') }}" class="nav-link">About</a></li>
+                                <li class="nav-item {{ $route->named('frontend.products.index') ? 'active' : '' }}"><a
+                                        href="{{ route('frontend.products.index') }}" class="nav-link">Shop</a></li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{ $route->named('frontend.sites.contact-us') ? 'active' : '' }}" href="{{ route('frontend.sites.contact-us') }}">Contact</a>
+                                    <a class="nav-link {{ $route->named('frontend.sites.contact-us') ? 'active' : '' }}"
+                                       href="{{ route('frontend.sites.contact-us') }}">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -98,12 +90,6 @@
                                 <li class="nav-item">
                                     <a href="#" class="icons">
                                         <i class="ti-user" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="#" class="icons">
-                                        <i class="ti-heart" aria-hidden="true"></i>
                                     </a>
                                 </li>
                             </ul>

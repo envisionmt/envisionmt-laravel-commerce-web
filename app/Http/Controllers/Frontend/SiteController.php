@@ -150,4 +150,9 @@ class SiteController extends Controller
     {
         return view('frontend.sites.contact');
     }
+
+    public function about(Request $request)
+    {
+        return view('frontend.sites.about');
+    }
 }

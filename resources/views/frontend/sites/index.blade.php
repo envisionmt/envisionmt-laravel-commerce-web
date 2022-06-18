@@ -62,9 +62,6 @@
                                         <i class="ti-eye"></i>
                                     </a>
                                     <a href="#">
-                                        <i class="ti-heart"></i>
-                                    </a>
-                                    <a href="#">
                                         <i class="ti-shopping-cart"></i>
                                     </a>
                                 </div>
@@ -139,9 +136,6 @@
                                                 <i class="ti-eye"></i>
                                             </a>
                                             <a href="#">
-                                                <i class="ti-heart"></i>
-                                            </a>
-                                            <a href="#">
                                                 <i class="ti-shopping-cart"></i>
                                             </a>
                                         </div>
@@ -185,9 +179,6 @@
                                 <div class="p_icon">
                                     <a href="#">
                                         <i class="ti-eye"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="ti-heart"></i>
                                     </a>
                                     <a href="#">
                                         <i class="ti-shopping-cart"></i>
