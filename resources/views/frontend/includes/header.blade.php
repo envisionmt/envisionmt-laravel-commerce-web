@@ -61,38 +61,7 @@
                         <div class="col-lg-7 pr-0">
                             <ul class="nav navbar-nav center_nav pull-right">
                                 <li class="nav-item {{ $route->named('frontend.sites.index') ? 'active' : '' }}"><a href="{{ route('frontend.sites.index') }}" class="nav-link">Home</a></li>
-                                <li class="nav-item submenu dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-haspopup="true"
-                                       aria-expanded="false">Shop</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="category.html">Shop Category</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="single-product.html">Product Details</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="checkout.html">Product Checkout</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cart.html">Shopping Cart</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item submenu dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-haspopup="true"
-                                       aria-expanded="false">Blog</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="blog.html">Blog</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="single-blog.html">Blog Details</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li class="nav-item {{ $route->named('frontend.products.index') ? 'active' : '' }}"><a href="{{ route('frontend.products.index') }}" class="nav-link">Shop</a></li>
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                        aria-haspopup="true"
@@ -107,7 +76,7 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Contact</a>
+                                    <a class="nav-link {{ $route->named('frontend.sites.contact-us') ? 'active' : '' }}" href="{{ route('frontend.sites.contact-us') }}">Contact</a>
                                 </li>
                             </ul>
                         </div>

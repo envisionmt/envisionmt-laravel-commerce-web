@@ -52,7 +52,9 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'backend.',
 */
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
 
+    require 'web/frontend/products.php';
     require 'web/frontend/sites.php';
+
 
     Route::group(['middleware' => ['auth']], function () {
 
