@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 
 use App\Http\Controllers\Controller;
+use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
@@ -16,14 +17,16 @@ use Illuminate\Support\Facades\View;
 class ProductController extends Controller
 {
     private $productRepository;
+    private $categoryRepository;
 
     /**
      * Constructor.
      * @param ProductRepository $productRepository
      */
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository)
     {
         $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -37,7 +40,8 @@ class ProductController extends Controller
     {
         try {
             $list = $this->productRepository->searchFromRequest($request);
-            return view('frontend.products.index', compact('list'));
+            $categories = $this->categoryRepository->all();
+            return view('frontend.products.index', compact('list', 'categories'));
         } catch (Exception $exception) {
             Log::error($exception);
             abort(500);
