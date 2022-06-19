@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\Products\AddCartRequest;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
 use Exception;
@@ -72,4 +73,11 @@ class ProductController extends Controller
         return redirect()->route('frontend.products.index');
     }
 
+
+    public function addCart(AddCartRequest $request) {
+        $attributes = $request->only(['product_id', 'qty']);
+        $product = $this->productRepository->getById($attributes['product_id']);
+        \Cart::add($product->id, $product->name, $attributes['qty'], $product->price);
+        return redirect()->back();
+    }
 }

@@ -77,7 +77,7 @@
                             <ul class="nav navbar-nav navbar-right right_nav pull-right">
                                 <li class="nav-item">
                                     <a href="#" class="icons">
-                                        <i class="ti-shopping-cart"></i>
+                                        <i class="ti-shopping-cart">{{ Cart::count() }}</i>
                                     </a>
                                 </li>
 

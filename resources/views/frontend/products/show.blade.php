@@ -22,7 +22,7 @@
 
     <!--================Single Product Area =================-->
     <div class="product_image_area">
-        <div class="container">
+        <div class="container mb-5">
             <div class="row s_product_inner">
                 <div class="col-lg-6">
                     <div class="s_product_img">
@@ -72,35 +72,40 @@
                         <p>
                             {{ $item->description }}
                         </p>
-                        <div class="product_count">
-                            <label for="qty">Quantity:</label>
-                            <input
-                                type="text"
-                                name="qty"
-                                id="sst"
-                                maxlength="12"
-                                value="1"
-                                title="Quantity:"
-                                class="input-text qty"
-                            />
-                            <button
-                                onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count"
-                                type="button"
-                            >
-                                <i class="lnr lnr-chevron-up"></i>
-                            </button>
-                            <button
-                                onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                class="reduced items-count"
-                                type="button"
-                            >
-                                <i class="lnr lnr-chevron-down"></i>
-                            </button>
-                        </div>
-                        <div class="card_area">
-                            <a class="main_btn" href="#">Add to Cart</a>
-                        </div>
+                        <form action="{{ route('frontend.products.addCart') }}" method="POST">
+                            @csrf
+                            <div class="product_count">
+                                <label for="qty">Quantity:</label>
+                                <input name="product_id" type="hidden" value="{{ $item->id }}">
+                                <input
+                                    type="text"
+                                    name="qty"
+                                    id="sst"
+                                    maxlength="12"
+                                    value="1"
+                                    title="Quantity:"
+                                    class="input-text qty"
+                                />
+                                <button
+                                    onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                    class="increase items-count"
+                                    type="button"
+                                >
+                                    <i class="lnr lnr-chevron-up"></i>
+                                </button>
+                                <button
+                                    onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                    class="reduced items-count"
+                                    type="button"
+                                >
+                                    <i class="lnr lnr-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="card_area">
+                                <button type="submit" class="main_btn">Add to Cart</button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
