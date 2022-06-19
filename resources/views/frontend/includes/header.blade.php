@@ -70,13 +70,28 @@
                                     <a class="nav-link {{ $route->named('frontend.sites.contact-us') ? 'active' : '' }}"
                                        href="{{ route('frontend.sites.contact-us') }}">Contact</a>
                                 </li>
+                                <li class="nav-item">
+                                    @if(Auth()->check())
+                                        <a href="{{ route('frontend.auth.logout') }}" class="nav-link"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
+                                            out</a>
+                                        <form id="logout-form" action="{{ route('frontend.auth.logout') }}"
+                                              method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    @else
+                                        <a class="nav-link {{ $route->named('frontend.auth.login') ? 'active' : '' }}"
+                                           href="{{ route('frontend.auth.login') }}">Login</a>
+                                    @endif
+
+                                </li>
                             </ul>
                         </div>
 
                         <div class="col-lg-5 pr-0">
                             <ul class="nav navbar-nav navbar-right right_nav pull-right">
                                 <li class="nav-item">
-                                    <a href="#" class="icons">
+                                    <a href="{{ route('frontend.products.cart') }}" class="icons">
                                         <i class="ti-shopping-cart">{{ Cart::count() }}</i>
                                     </a>
                                 </li>

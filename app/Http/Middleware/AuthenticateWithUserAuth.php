@@ -25,7 +25,7 @@ class AuthenticateWithUserAuth
             $request->user()->role !== User::USER_ROLE) {
             return $request->expectsJson()
                 ? abort(403, 'You can not access this page.')
-                : Redirect::guest(URL::route($redirectToRoute ?: 'backend.sites.index'));
+                : Redirect::guest(URL::route($redirectToRoute ?: 'frontend.sites.login'));
         }
 
         return $next($request);

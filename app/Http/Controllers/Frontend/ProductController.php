@@ -77,7 +77,19 @@ class ProductController extends Controller
     public function addCart(AddCartRequest $request) {
         $attributes = $request->only(['product_id', 'qty']);
         $product = $this->productRepository->getById($attributes['product_id']);
-        \Cart::add($product->id, $product->name, $attributes['qty'], $product->price);
+        \Cart::add($product->id, $product->name, $attributes['qty'], $product->price, 0, $product->toArray());
         return redirect()->back();
+    }
+
+    public function cart(Request $request)
+    {
+        dd(\Cart::content());
+        return view('frontend.products.cart');
+    }
+
+    public function checkout(Request $request)
+    {
+//        auth()->logout();
+        return view('frontend.products.checkout');
     }
 }
