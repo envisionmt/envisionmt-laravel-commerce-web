@@ -66,8 +66,8 @@
                                         href="{{ route('frontend.sites.about') }}" class="nav-link">About</a></li>
                                 <li class="nav-item {{ $route->named('frontend.products.index') ? 'active' : '' }}"><a
                                         href="{{ route('frontend.products.index') }}" class="nav-link">Shop</a></li>
-                                <li class="nav-item">
-                                    <a class="nav-link {{ $route->named('frontend.sites.contact-us') ? 'active' : '' }}"
+                                <li class="nav-item {{ $route->named('frontend.sites.contact-us') ? 'active' : '' }}">
+                                    <a class="nav-link"
                                        href="{{ route('frontend.sites.contact-us') }}">Contact</a>
                                 </li>
                                 <li class="nav-item">

@@ -83,13 +83,13 @@ class ProductController extends Controller
 
     public function cart(Request $request)
     {
-        dd(\Cart::content());
-        return view('frontend.products.cart');
+//        dd(\Cart::content());
+        $list = \Cart::content();
+        return view('frontend.products.cart', compact('list'));
     }
 
     public function checkout(Request $request)
     {
-//        auth()->logout();
         return view('frontend.products.checkout');
     }
 }
