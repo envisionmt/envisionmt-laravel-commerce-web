@@ -91,7 +91,6 @@ class ProductController extends Controller
 
     public function cart(Request $request)
     {
-//        dd(\Cart::content());
         $list = \Cart::content();
         return view('frontend.products.cart', compact('list'));
     }

@@ -27,7 +27,7 @@
                                             />
                                         </div>
                                         <div class="media-body">
-                                            <p>{{ $item->options->name }}</p>
+                                            <p><a href="{{ route('frontend.products.show', $item->id) }}">{{ $item->options->name }}</a></p>
                                         </div>
                                     </div>
                                 </td>
