@@ -90,6 +90,7 @@ class ProductController extends Controller
 
     public function checkout(Request $request)
     {
-        return view('frontend.products.checkout');
+        $list = \Cart::content();
+        return view('frontend.products.checkout', compact('list'));
     }
 }
