@@ -1,3 +1,6 @@
+@push('after-scripts')
+    <script src="{{ asset('frontend/js/checkout.js') }}"></script>
+@endpush
 @extends('frontend.layouts.app')
 
 @section('content')
@@ -29,18 +32,17 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <h3>Billing Details</h3>
-                        <form
-                            class="row contact_form"
-                            action="#"
-                            method="post"
-                            novalidate="novalidate"
+                        <form id="checkout-form" action="{{ route('frontend.products.postCheckout') }}"
+                              method="POST"
+                              class="row contact_form"
                         >
+                            @csrf
                             <div class="col-md-6 form-group p_star">
                                 <input
                                     type="text"
                                     class="form-control"
                                     id="first"
-                                    name="name"
+                                    name="first_name"
                                 />
                                 <span
                                     class="placeholder"
@@ -52,7 +54,7 @@
                                     type="text"
                                     class="form-control"
                                     id="last"
-                                    name="name"
+                                    name="last_name"
                                 />
                                 <span class="placeholder" data-placeholder="Last name"></span>
                             </div>
@@ -70,7 +72,7 @@
                                     type="text"
                                     class="form-control"
                                     id="number"
-                                    name="number"
+                                    name="phone_number"
                                 />
                                 <span
                                     class="placeholder"
@@ -82,7 +84,7 @@
                                     type="text"
                                     class="form-control"
                                     id="email"
-                                    name="compemailany"
+                                    name="email"
                                 />
                                 <span
                                     class="placeholder"
@@ -90,18 +92,11 @@
                                 ></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <select class="country_select">
-                                    <option value="1">Country</option>
-                                    <option value="2">Country</option>
-                                    <option value="4">Country</option>
-                                </select>
-                            </div>
-                            <div class="col-md-12 form-group p_star">
                                 <input
                                     type="text"
                                     class="form-control"
                                     id="add1"
-                                    name="add1"
+                                    name="address1"
                                 />
                                 <span
                                     class="placeholder"
@@ -113,7 +108,7 @@
                                     type="text"
                                     class="form-control"
                                     id="add2"
-                                    name="add2"
+                                    name="address2"
                                 />
                                 <span
                                     class="placeholder"
@@ -129,29 +124,22 @@
                                 />
                                 <span class="placeholder" data-placeholder="Town/City"></span>
                             </div>
-                            <div class="col-md-12 form-group p_star">
-                                <select class="country_select">
-                                    <option value="1">District</option>
-                                    <option value="2">District</option>
-                                    <option value="4">District</option>
-                                </select>
-                            </div>
                             <div class="col-md-12 form-group">
                                 <input
                                     type="text"
                                     class="form-control"
                                     id="zip"
-                                    name="zip"
+                                    name="post_code"
                                     placeholder="Postcode/ZIP"
                                 />
                             </div>
                             <div class="col-md-12 form-group">
                                 <textarea
                                     class="form-control"
-                                    name="message"
+                                    name="description"
                                     id="message"
                                     rows="1"
-                                    placeholder="Order Notes"
+                                    placeholder="Order Request"
                                 ></textarea>
                             </div>
                         </form>
@@ -200,7 +188,7 @@
                             <div class="payment_item active">
                                 <div class="radion_btn">
                                     <label for="f-option6">Alipay </label>
-                                    <img src="{{asset('frontend/img/alipay.png')}}" alt="alipay" />
+                                    <img src="{{asset('frontend/img/alipay.png')}}" alt="alipay"/>
                                 </div>
                                 <p>
                                     Please send a check to Store Name, Store Street, Store Town,
@@ -208,11 +196,11 @@
                                 </p>
                             </div>
                             <div class="creat_account">
-                                <input type="checkbox" id="f-option4" name="selector" />
+                                <input type="checkbox" id="f-option4" name="selector"/>
                                 <label for="f-option4">I’ve read and accept the </label>
                                 <a href="#">terms & conditions*</a>
                             </div>
-                            <a class="main_btn" href="#">Proceed to Alipay</a>
+                            <button class="main_btn" id="checkout-btn">Proceed to Alipay</button>
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Products\AddCartRequest;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
+use App\Services\RSAService;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -19,15 +20,21 @@ class ProductController extends Controller
 {
     private $productRepository;
     private $categoryRepository;
+    private $rsaService;
 
     /**
      * Constructor.
      * @param ProductRepository $productRepository
+     * @param CategoryRepository $categoryRepository
+     * @param RSAService $rsaService
      */
-    public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository)
+    public function __construct(ProductRepository $productRepository,
+                                CategoryRepository $categoryRepository,
+                                RSAService $rsaService)
     {
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->rsaService = $rsaService;
     }
 
     /**
@@ -74,7 +81,8 @@ class ProductController extends Controller
     }
 
 
-    public function addCart(AddCartRequest $request) {
+    public function addCart(AddCartRequest $request)
+    {
         $attributes = $request->only(['product_id', 'qty']);
         $product = $this->productRepository->getById($attributes['product_id']);
         \Cart::add($product->id, $product->name, $attributes['qty'], $product->price, 0, $product->toArray());
@@ -92,5 +100,11 @@ class ProductController extends Controller
     {
         $list = \Cart::content();
         return view('frontend.products.checkout', compact('list'));
+    }
+
+    public function postCheckout(Request $request)
+    {
+        $request->session()->flash('success', 'You ordered successful!');
+        return redirect()->route('frontend.sites.index');
     }
 }

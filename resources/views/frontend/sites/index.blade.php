@@ -20,7 +20,9 @@
         </div>
     </section>
     <!--================End Home Banner Area =================-->
-
+    <section class="container">
+        @include('backend.components.alert')
+    </section>
     <!-- Start feature Area -->
     <section class="feature-area section_gap_bottom_custom">
         <div class="container">
