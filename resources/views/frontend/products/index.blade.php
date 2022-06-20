@@ -1,3 +1,6 @@
+@push('after-scripts')
+    <script src="{{ asset('frontend/js/add-cart.js') }}"></script>
+@endpush
 @php
     $route = request()->route();
 @endphp
@@ -41,12 +44,21 @@
                                                 alt="{{ $item->name }}"
                                             />
                                             <div class="p_icon">
-                                                <a href="#">
+                                                <a href="{{ route('frontend.products.show', $item->id) }}">
                                                     <i class="ti-eye"></i>
                                                 </a>
-                                                <a href="#">
-                                                    <i class="ti-shopping-cart"></i>
+
+                                                <a class="add-cart" href="#">
+                                                    <form action="{{ route('frontend.products.addCart') }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        <input name="product_id" type="hidden" value="{{ $item->id }}">
+                                                        <input name="qty" type="hidden" value="1">
+                                                        <i class="ti-shopping-cart"></i>
+                                                    </form>
                                                 </a>
+
+
                                             </div>
                                         </div>
                                         <div class="product-btm">

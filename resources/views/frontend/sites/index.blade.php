@@ -1,3 +1,6 @@
+@push('after-scripts')
+    <script src="{{ asset('frontend/js/add-cart.js') }}"></script>
+@endpush
 @extends('frontend.layouts.app')
 
 @section('content')
@@ -58,11 +61,17 @@
                             <div class="product-img">
                                 <img class="img-fluid w-100" src="{{ $featuredProduct->image }}" alt=""/>
                                 <div class="p_icon">
-                                    <a href="#">
+                                    <a href="{{ route('frontend.products.show', $featuredProduct->id) }}">
                                         <i class="ti-eye"></i>
                                     </a>
-                                    <a href="#">
-                                        <i class="ti-shopping-cart"></i>
+                                    <a class="add-cart" href="#">
+                                        <form action="{{ route('frontend.products.addCart') }}"
+                                              method="POST">
+                                            @csrf
+                                            <input name="product_id" type="hidden" value="{{ $featuredProduct->id }}">
+                                            <input name="qty" type="hidden" value="1">
+                                            <i class="ti-shopping-cart"></i>
+                                        </form>
                                     </a>
                                 </div>
                             </div>
@@ -120,7 +129,14 @@
                             <img class="img-fluid" src="{{ $hotProduct->image }}" alt="{{ $hotProduct->name }}"/>
                         </div>
                         <h4>${{ $hotProduct->price }}</h4>
-                        <a href="#" class="main_btn">Add to cart</a>
+
+                        <form action="{{ route('frontend.products.addCart') }}"
+                              method="POST">
+                            @csrf
+                            <input name="product_id" type="hidden" value="{{ $hotProduct->id }}">
+                            <input name="qty" type="hidden" value="1">
+                            <button type="submit" class="main_btn">Add to cart</button>
+                        </form>
                     </div>
                 </div>
 
@@ -132,11 +148,17 @@
                                     <div class="product-img">
                                         <img class="img-fluid w-100" src="{{ $newProduct->image }}" alt=""/>
                                         <div class="p_icon">
-                                            <a href="#">
+                                            <a href="{{ route('frontend.products.show', $newProduct->id) }}">
                                                 <i class="ti-eye"></i>
                                             </a>
-                                            <a href="#">
-                                                <i class="ti-shopping-cart"></i>
+                                            <a class="add-cart" href="#">
+                                                <form action="{{ route('frontend.products.addCart') }}"
+                                                      method="POST">
+                                                    @csrf
+                                                    <input name="product_id" type="hidden" value="{{ $newProduct->id }}">
+                                                    <input name="qty" type="hidden" value="1">
+                                                    <i class="ti-shopping-cart"></i>
+                                                </form>
                                             </a>
                                         </div>
                                     </div>
@@ -177,11 +199,17 @@
                             <div class="product-img">
                                 <img class="img-fluid w-100" src="{{ $product->image }}" alt="{{ $product->title }}"/>
                                 <div class="p_icon">
-                                    <a href="#">
+                                    <a href="{{ route('frontend.products.show', $product->id) }}">
                                         <i class="ti-eye"></i>
                                     </a>
-                                    <a href="#">
-                                        <i class="ti-shopping-cart"></i>
+                                    <a class="add-cart" href="#">
+                                        <form action="{{ route('frontend.products.addCart') }}"
+                                              method="POST">
+                                            @csrf
+                                            <input name="product_id" type="hidden" value="{{ $product->id }}">
+                                            <input name="qty" type="hidden" value="1">
+                                            <i class="ti-shopping-cart"></i>
+                                        </form>
                                     </a>
                                 </div>
                             </div>
