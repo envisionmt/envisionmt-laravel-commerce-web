@@ -61,7 +61,6 @@ class AuthController extends Controller
             ];
 
             $remember = !empty($request->get('remember'));
-
             if (Auth::attempt($credentials, $remember)) {
                 $oldUrl = session('oldUrl');
                 if (!empty($oldUrl)) {
