@@ -114,7 +114,8 @@ class ProductController extends Controller
 
     public function postCheckout(CheckoutRequest $request)
     {
-        $attributes = $request->only(['email', 'description', 'first_name', 'last_name', 'company_name', 'post_code', 'city', 'address1', 'address2']);
+        $attributes = $request->only(['email', 'description', 'first_name', 'last_name', 'company_name', 'phone', 'post_code', 'city', 'address1', 'address2']);
+//        dd($attributes);
         $this->orderPaymentRepository->create([
             'order_no' => time(),
             'channel' => OrderPayment::ALIPAY_CHANNEL,
@@ -122,7 +123,9 @@ class ProductController extends Controller
             'description' => $attributes['description'],
             'transaction_amount' => \Cart::total(),
             'transaction_amount_origin' => \Cart::total(),
+            'subtotal' => \Cart::subtotal(),
             'transaction_currency' => OrderPayment::MALAYSIA_CURRENCY,
+            'shipping_charge' => 0,
             'fpx_bank' => 1,
             'user_id' => authUserId(),
             'device' => $this->agent->isDesktop() ? OrderPayment::DESKTOP_DEVICE : OrderPayment::PHONE_DEVICE,
@@ -138,6 +141,8 @@ class ProductController extends Controller
             'shipping_destination_id' => '',
             'delivery_method_id' => '',
             'payment_method_id' => '',
+            'status' => OrderPayment::PENDING_STATUS,
+            'shipping_status' => OrderPayment::PROCESSING_SHIPPING_STATUS
         ]);
         $request->session()->flash('success', 'You ordered successful!');
         return redirect()->route('frontend.sites.index');

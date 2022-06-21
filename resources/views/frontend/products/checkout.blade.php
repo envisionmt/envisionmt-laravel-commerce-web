@@ -48,7 +48,7 @@
                                 @include('frontend.fields.company-name')
                             </div>
                             <div class="col-md-6">
-                                @include('frontend.fields.phone-number')
+                                @include('frontend.fields.phone')
                             </div>
                             <div class="col-md-6">
                                 @include('frontend.fields.email-address')
