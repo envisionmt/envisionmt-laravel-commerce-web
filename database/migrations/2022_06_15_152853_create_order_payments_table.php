@@ -21,7 +21,7 @@ class CreateOrderPaymentsTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->unsignedTinyInteger('fpx_bank');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->unsignedDouble('transaction_amount');
             $table->unsignedDouble('transaction_amount_origin');
             $table->unsignedDouble('subtotal');

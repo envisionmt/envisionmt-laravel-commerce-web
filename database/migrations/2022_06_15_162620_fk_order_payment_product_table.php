@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class FkProductUserTable extends Migration
+class FkOrderPaymentProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class FkProductUserTable extends Migration
      */
     public function up()
     {
-        Schema::table('product_user', function (Blueprint $table) {
+        Schema::table('order_payment_product', function (Blueprint $table) {
             $table->foreign('order_payment_id')
                 ->references('id')
                 ->on('order_payments')
@@ -33,9 +33,9 @@ class FkProductUserTable extends Migration
      */
     public function down()
     {
-        Schema::table('product_user', function (Blueprint $table) {
-            $table->dropForeign('product_user_order_payment_id_foreign');
-            $table->dropForeign('product_user_product_id_foreign');
+        Schema::table('order_payment_product', function (Blueprint $table) {
+            $table->dropForeign('order_payment_product_order_payment_id_foreign');
+            $table->dropForeign('order_payment_product_product_id_foreign');
         });
     }
 }

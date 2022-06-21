@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductUserTable extends Migration
+class CreateOrderPaymentProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateProductUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_user', function (Blueprint $table) {
+        Schema::create('order_payment_product', function (Blueprint $table) {
             $table->uuid('order_payment_id');
             $table->uuid('product_id');
             $table->unsignedInteger('quantity');
             $table->unsignedDouble('total');
             $table->unsignedDouble('price');
-            $table->timestamps();
 
             $table->primary(['order_payment_id', 'product_id'], 'order_payment_id_product_id_primary');
         });
@@ -32,6 +31,6 @@ class CreateProductUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_user');
+        Schema::dropIfExists('order_payment_product');
     }
 }

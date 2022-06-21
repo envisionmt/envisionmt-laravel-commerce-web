@@ -115,8 +115,7 @@ class ProductController extends Controller
     public function postCheckout(CheckoutRequest $request)
     {
         $attributes = $request->only(['email', 'description', 'first_name', 'last_name', 'company_name', 'phone', 'post_code', 'city', 'address1', 'address2']);
-//        dd($attributes);
-        $this->orderPaymentRepository->create([
+        $orderPayment = $this->orderPaymentRepository->create([
             'order_no' => time(),
             'channel' => OrderPayment::ALIPAY_CHANNEL,
             'email' => $attributes['email'],
@@ -144,6 +143,14 @@ class ProductController extends Controller
             'status' => OrderPayment::PENDING_STATUS,
             'shipping_status' => OrderPayment::PROCESSING_SHIPPING_STATUS
         ]);
+        $list = \Cart::content();
+        foreach ($list as $item) {
+            $orderPayment->products()->attach($item->id, [
+                'quantity' => $item->qty,
+                'total' => $item->qty * $item->options->price,
+                'price' => $item->options->price
+            ]);
+        }
         $request->session()->flash('success', 'You ordered successful!');
         return redirect()->route('frontend.sites.index');
     }
