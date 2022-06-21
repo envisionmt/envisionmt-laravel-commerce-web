@@ -125,7 +125,7 @@ class ProductController extends Controller
         $attributes = $request->only(['email', 'description', 'first_name', 'last_name', 'company_name', 'phone', 'post_code', 'city', 'address1', 'address2']);
 
         $orderPayment = $this->orderPaymentRepository->create([
-            'order_no' => 'DB' . time(),
+            'order_no' => env('ORDER_NO_CHARACTER', 'DB') . time(),
             'channel' => OrderPayment::ALIPAY_CHANNEL,
             'email' => $attributes['email'],
             'description' => $attributes['description'],
