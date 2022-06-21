@@ -43,11 +43,8 @@
                                     class="form-control"
                                     id="first"
                                     name="first_name"
+                                    placeholder="First name"
                                 />
-                                <span
-                                    class="placeholder"
-                                    data-placeholder="First name"
-                                ></span>
                             </div>
                             <div class="col-md-6 form-group p_star">
                                 <input
@@ -55,8 +52,8 @@
                                     class="form-control"
                                     id="last"
                                     name="last_name"
+                                    placeholder="Last name"
                                 />
-                                <span class="placeholder" data-placeholder="Last name"></span>
                             </div>
                             <div class="col-md-12 form-group">
                                 <input
@@ -73,11 +70,8 @@
                                     class="form-control"
                                     id="number"
                                     name="phone_number"
+                                    placeholder="Phone number"
                                 />
-                                <span
-                                    class="placeholder"
-                                    data-placeholder="Phone number"
-                                ></span>
                             </div>
                             <div class="col-md-6 form-group p_star">
                                 <input
@@ -85,11 +79,8 @@
                                     class="form-control"
                                     id="email"
                                     name="email"
+                                    placeholder="Email Address"
                                 />
-                                <span
-                                    class="placeholder"
-                                    data-placeholder="Email Address"
-                                ></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
                                 <input
@@ -97,11 +88,8 @@
                                     class="form-control"
                                     id="add1"
                                     name="address1"
+                                    placeholder="Address line 01"
                                 />
-                                <span
-                                    class="placeholder"
-                                    data-placeholder="Address line 01"
-                                ></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
                                 <input
@@ -109,11 +97,8 @@
                                     class="form-control"
                                     id="add2"
                                     name="address2"
+                                    placeholder="Address line 02"
                                 />
-                                <span
-                                    class="placeholder"
-                                    data-placeholder="Address line 02"
-                                ></span>
                             </div>
                             <div class="col-md-12 form-group p_star">
                                 <input
@@ -121,8 +106,8 @@
                                     class="form-control"
                                     id="city"
                                     name="city"
+                                    placeholder="Town/City"
                                 />
-                                <span class="placeholder" data-placeholder="Town/City"></span>
                             </div>
                             <div class="col-md-12 form-group">
                                 <input

@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Products\AddCartRequest;
+use App\Http\Requests\Frontend\Products\CheckoutRequest;
+use App\Models\OrderPayment;
 use App\Repositories\CategoryRepository;
+use App\Repositories\OrderPaymentRepository;
 use App\Repositories\ProductRepository;
 use App\Services\RSAService;
 use Exception;
@@ -15,26 +18,34 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
+use Jenssegers\Agent\Agent;
 
 class ProductController extends Controller
 {
     private $productRepository;
     private $categoryRepository;
+    private $orderPaymentRepository;
     private $rsaService;
+    private $agent;
 
     /**
      * Constructor.
      * @param ProductRepository $productRepository
      * @param CategoryRepository $categoryRepository
+     * @param OrderPaymentRepository $orderPaymentRepository
      * @param RSAService $rsaService
      */
     public function __construct(ProductRepository $productRepository,
                                 CategoryRepository $categoryRepository,
+                                OrderPaymentRepository $orderPaymentRepository,
+                                Agent $agent,
                                 RSAService $rsaService)
     {
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->orderPaymentRepository = $orderPaymentRepository;
         $this->rsaService = $rsaService;
+        $this->agent = $agent;
     }
 
     /**
@@ -101,8 +112,33 @@ class ProductController extends Controller
         return view('frontend.products.checkout', compact('list'));
     }
 
-    public function postCheckout(Request $request)
+    public function postCheckout(CheckoutRequest $request)
     {
+        $attributes = $request->only(['email', 'description', 'first_name', 'last_name', 'company_name', 'post_code', 'city', 'address1', 'address2']);
+        $this->orderPaymentRepository->create([
+            'order_no' => time(),
+            'channel' => OrderPayment::ALIPAY_CHANNEL,
+            'email' => $attributes['email'],
+            'description' => $attributes['description'],
+            'transaction_amount' => \Cart::total(),
+            'transaction_amount_origin' => \Cart::total(),
+            'transaction_currency' => OrderPayment::MALAYSIA_CURRENCY,
+            'fpx_bank' => 1,
+            'user_id' => authUserId(),
+            'device' => $this->agent->isDesktop() ? OrderPayment::DESKTOP_DEVICE : OrderPayment::PHONE_DEVICE,
+            'ip' => $request->ip(),
+            'first_name' => $attributes['first_name'],
+            'last_name' => $attributes['last_name'],
+            'company_name' => $attributes['company_name'],
+            'post_code' => $attributes['post_code'],
+            'city' => $attributes['city'],
+            'address1' => $attributes['address1'],
+            'address2' => $attributes['address2'],
+            'phone' => $attributes['phone'],
+            'shipping_destination_id' => '',
+            'delivery_method_id' => '',
+            'payment_method_id' => '',
+        ]);
         $request->session()->flash('success', 'You ordered successful!');
         return redirect()->route('frontend.sites.index');
     }

@@ -19,6 +19,7 @@ class CreateOrderPaymentsTable extends Migration
             $table->string('order_no');
             $table->unsignedTinyInteger('channel');
             $table->string('email');
+            $table->string('phone');
             $table->unsignedTinyInteger('fpx_bank');
             $table->string('description');
             $table->unsignedDouble('transaction_amount');
@@ -30,6 +31,7 @@ class CreateOrderPaymentsTable extends Migration
 
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('company_name')->nullable();
             $table->string('post_code');
             $table->string('city');
             $table->string('address1');
