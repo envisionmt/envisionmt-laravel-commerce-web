@@ -192,9 +192,10 @@ class ProductController extends Controller
 
         } catch (\Exception $exception) {
             Log::error('error_callback', [$exception->getMessage()]);
+            $request->session()->flash('error', 'Payment on your order has failed. Please process payment again!');
+            return redirect()->route('frontend.products.checkout');
         }
-        $request->session()->flash('success', 'You ordered successful!');
-        return redirect()->route('frontend.sites.index');
+
     }
 
     public function callbackData(Request $request)
@@ -204,6 +205,29 @@ class ProductController extends Controller
 
     public function returnData(Request $request)
     {
-        dd($request->all());
+        $attributes = $request->only(['transactionId', 'merchantOrderNo', 'transactionStatus', 'transactionAmount']);
+        $orderPayment = $this->orderPaymentRepository->getByColumn($attributes['merchantOrderNo'], 'order_no');
+        $orderPayment->out_order_no = $attributes['transactionId'];
+        $oldStatus = $orderPayment->status;
+        $status = array_search($attributes['transactionStatus'], OrderPayment::$statusNames);
+        if (!$status) {
+            $request->session()->flash('error', 'Payment on your order has failed. Please process payment again!');
+            return redirect()->route('frontend.products.checkout');
+        }
+        else if ($oldStatus == OrderPayment::PENDING_STATUS && $status == OrderPayment::SUCCESSFUL_STATUS) {
+            $orderPayment->status = $status;
+            $orderPayment->save();
+            \Cart::destroy();
+            $request->session()->flash('success', 'You ordered successful!');
+            return redirect()->route('frontend.sites.index');
+        } else if ($oldStatus == OrderPayment::APPROVED_STATUS) {
+            \Cart::destroy();
+        } else if ($status == OrderPayment::CANCELLED_STATUS) {
+            $request->session()->flash('error', 'Your payment was canceled. Please process payment again!');
+            return redirect()->route('frontend.products.checkout');
+        } else {
+            $request->session()->flash('error', 'Payment on your order has failed. Please process payment again!');
+            return redirect()->route('frontend.products.checkout');
+        }
     }
 }

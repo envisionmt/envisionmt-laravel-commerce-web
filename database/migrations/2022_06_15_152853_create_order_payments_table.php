@@ -17,6 +17,7 @@ class CreateOrderPaymentsTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('user_id');
             $table->string('order_no');
+            $table->string('out_order_no')->nullable();
             $table->unsignedTinyInteger('channel');
             $table->string('email');
             $table->string('phone');

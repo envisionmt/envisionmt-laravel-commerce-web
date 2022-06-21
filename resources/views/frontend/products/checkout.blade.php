@@ -30,6 +30,9 @@
         <div class="container">
             <div class="billing_details">
                 <div class="row">
+                    @include('backend.components.alert')
+                </div>
+                <div class="row">
                     <div class="col-lg-8">
                         <h3>Billing Details</h3>
                         <form id="checkout-form" action="{{ route('frontend.products.postCheckout') }}"

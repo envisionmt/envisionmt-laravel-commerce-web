@@ -53,6 +53,7 @@ class OrderPayment extends Model
     protected $fillable = [
         'user_id',
         'order_no',
+        'out_order_no',
         'channel',
         'email',
         'phone',
@@ -94,6 +95,7 @@ class OrderPayment extends Model
         return [
             'user_id' => 'required|exists:App\Models\User,id',
             'order_no' => 'required|max:255',
+            'out_order_no' => 'nullable|max:255',
             'channel' => 'required',
             'email' => 'required|email',
             'phone' => 'required|regex:/(01)[0-9]{9}/',
@@ -144,14 +146,14 @@ class OrderPayment extends Model
     }
 
     public static $statusNames = [
-        self::PENDING_STATUS => 'Pending',
-        self::SUCCESSFUL_STATUS => 'Successful',
-        self::APPROVED_STATUS => 'Approved',
-        self::FAILED_STATUS => 'Failed',
-        self::CANCELLED_STATUS => 'Cancelled',
-        self::WAIT_BUYER_PAY_STATUS => 'Wait Buyer Pay',
-        self::TRADE_FINISHED_STATUS => 'Trade Finished',
-        self::TRADE_CLOSE_STATUS => 'Trade Close',
+        self::PENDING_STATUS => 'PENDING',
+        self::SUCCESSFUL_STATUS => 'SUCCESSFUL',
+        self::APPROVED_STATUS => 'APPROVED',
+        self::FAILED_STATUS => 'FAILED',
+        self::CANCELLED_STATUS => 'CANCELLED',
+        self::WAIT_BUYER_PAY_STATUS => 'WAIT_BUYER_PAY',
+        self::TRADE_FINISHED_STATUS => 'TRADE_FINISHED',
+        self::TRADE_CLOSE_STATUS => 'TRADE_CLOSE',
     ];
 
     public function getStatusNameAttribute()
