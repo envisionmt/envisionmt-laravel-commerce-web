@@ -187,8 +187,8 @@ class ProductController extends Controller
                 'transactionCurrency' => OrderPayment::MALAYSIA_CURRENCY,
                 'skipConfirmation' => true
             ];
-            dd($signedDataM1pay, $transactionBodyM1pay);
             $data = $this->commonService->postJsonAuth($transactionBodyM1pay, env('CREATE_TRANSACTION_M1PAY'), Cache::get('OAUTH_KEY'));
+            return redirect($data);
 
         } catch (\Exception $exception) {
             Log::error('error_callback', [$exception->getMessage()]);
