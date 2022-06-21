@@ -37,96 +37,38 @@
                               class="row contact_form"
                         >
                             @csrf
-                            <div class="col-md-6 form-group p_star">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="first"
-                                    name="first_name"
-                                    placeholder="First name"
-                                />
+                            <div class="col-md-6">
+                                @include('frontend.fields.first-name')
                             </div>
-                            <div class="col-md-6 form-group p_star">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="last"
-                                    name="last_name"
-                                    placeholder="Last name"
-                                />
+
+                            <div class="col-md-6">
+                                @include('frontend.fields.last-name')
                             </div>
-                            <div class="col-md-12 form-group">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="company"
-                                    name="company"
-                                    placeholder="Company name"
-                                />
+                            <div class="col-md-12">
+                                @include('frontend.fields.company-name')
                             </div>
-                            <div class="col-md-6 form-group p_star">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="number"
-                                    name="phone_number"
-                                    placeholder="Phone number"
-                                />
+                            <div class="col-md-6">
+                                @include('frontend.fields.phone-number')
                             </div>
-                            <div class="col-md-6 form-group p_star">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="email"
-                                    name="email"
-                                    placeholder="Email Address"
-                                />
+                            <div class="col-md-6">
+                                @include('frontend.fields.email-address')
                             </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="add1"
-                                    name="address1"
-                                    placeholder="Address line 01"
-                                />
+                            <div class="col-md-12">
+                                @include('frontend.fields.address1')
                             </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="add2"
-                                    name="address2"
-                                    placeholder="Address line 02"
-                                />
+                            <div class="col-md-12">
+                                @include('frontend.fields.address2')
                             </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="city"
-                                    name="city"
-                                    placeholder="Town/City"
-                                />
+                            <div class="col-md-12">
+                                @include('frontend.fields.city')
                             </div>
-                            <div class="col-md-12 form-group">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="zip"
-                                    name="post_code"
-                                    placeholder="Postcode/ZIP"
-                                />
+                            <div class="col-md-12">
+                                @include('frontend.fields.post_code')
                             </div>
-                            <div class="col-md-12 form-group">
-                                <textarea
-                                    class="form-control"
-                                    name="description"
-                                    id="message"
-                                    rows="1"
-                                    placeholder="Order Request"
-                                ></textarea>
+                            <div class="col-md-12">
+                                @include('frontend.fields.order-request')
                             </div>
+
                         </form>
                     </div>
                     <div class="col-lg-4">
