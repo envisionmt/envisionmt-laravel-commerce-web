@@ -10,13 +10,16 @@ use App\Models\OrderPayment;
 use App\Repositories\CategoryRepository;
 use App\Repositories\OrderPaymentRepository;
 use App\Repositories\ProductRepository;
+use App\Services\CommonService;
 use App\Services\RSAService;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Jenssegers\Agent\Agent;
 
@@ -25,6 +28,7 @@ class ProductController extends Controller
     private $productRepository;
     private $categoryRepository;
     private $orderPaymentRepository;
+    private $commonService;
     private $rsaService;
     private $agent;
 
@@ -33,17 +37,21 @@ class ProductController extends Controller
      * @param ProductRepository $productRepository
      * @param CategoryRepository $categoryRepository
      * @param OrderPaymentRepository $orderPaymentRepository
+     * @param Agent $agent
+     * @param CommonService $commonService
      * @param RSAService $rsaService
      */
     public function __construct(ProductRepository $productRepository,
                                 CategoryRepository $categoryRepository,
                                 OrderPaymentRepository $orderPaymentRepository,
                                 Agent $agent,
+                                CommonService $commonService,
                                 RSAService $rsaService)
     {
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
         $this->orderPaymentRepository = $orderPaymentRepository;
+        $this->commonService = $commonService;
         $this->rsaService = $rsaService;
         $this->agent = $agent;
     }
@@ -115,8 +123,9 @@ class ProductController extends Controller
     public function postCheckout(CheckoutRequest $request)
     {
         $attributes = $request->only(['email', 'description', 'first_name', 'last_name', 'company_name', 'phone', 'post_code', 'city', 'address1', 'address2']);
+
         $orderPayment = $this->orderPaymentRepository->create([
-            'order_no' => time(),
+            'order_no' => 'DB' . time(),
             'channel' => OrderPayment::ALIPAY_CHANNEL,
             'email' => $attributes['email'],
             'description' => $attributes['description'],
@@ -150,6 +159,39 @@ class ProductController extends Controller
                 'total' => $item->qty * $item->options->price,
                 'price' => $item->options->price
             ]);
+        }
+
+        try {
+            $signedDataM1pay = [
+                'productDescription' => env('APP_NAME') . ' ' . $orderPayment->order_no,
+                'transactionAmount' => number_format((float)$orderPayment->transaction_amount, 2, '.', ''),
+                'exchangeOrderNo' => $orderPayment->order_no,
+                'merchantOrderNo' => $orderPayment->order_no,
+                'transactionCurrency' => OrderPayment::MALAYSIA_CURRENCY,
+                'emailAddress' => $attributes['email'],
+                'merchantId' => env('MERCHANT_ID_M1PAY')
+            ];
+            $fileName = Storage::path( env('PRIVATE_KEY_M1PAY'));
+            $privateKeyM1pay = file_get_contents($fileName);
+            $signedDataEncryptM1pay = $this->rsaService->generateSignature($signedDataM1pay, $privateKeyM1pay);
+            $transactionBodyM1pay = [
+                'channel' => 'ALIPAY',
+                'emailAddress' => $attributes['email'],
+                'exchangeOrderNo' => $orderPayment->order_no,
+                'fpxBank' => 1,
+                'merchantId' => env('MERCHANT_ID_M1PAY'),
+                'merchantOrderNo' => $orderPayment->order_no,
+                'productDescription' => env('APP_NAME') . ' ' . $orderPayment->order_no,
+                'signedData' => $signedDataEncryptM1pay,
+                'transactionAmount' => number_format((float)$orderPayment->transaction_amount, 2, '.', ''),
+                'transactionCurrency' => OrderPayment::MALAYSIA_CURRENCY,
+                'skipConfirmation' => true
+            ];
+            dd($signedDataM1pay, $transactionBodyM1pay);
+            $data = $this->commonService->postJsonAuth($transactionBodyM1pay, env('CREATE_TRANSACTION_M1PAY'), Cache::get('OAUTH_KEY'));
+
+        } catch (\Exception $exception) {
+            Log::error('error_callback', [$exception->getMessage()]);
         }
         $request->session()->flash('success', 'You ordered successful!');
         return redirect()->route('frontend.sites.index');

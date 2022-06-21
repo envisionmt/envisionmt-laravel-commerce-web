@@ -18,18 +18,35 @@ trait ConsumeExternalService
     public function performRequest($method, $requestUrl, $formParams = [], $queryParams = [], $headers = [])
     {
         $client = new Client([
-            'base_uri'  =>  $this->baseUri,
+            'base_uri' => $this->baseUri,
         ]);
 
-        if(isset($this->secret))
-        {
+        if (isset($this->secret)) {
             $headers['Authorization'] = $this->secret;
         }
 
         $response = $client->request($method, $requestUrl, [
             'form_params' => $formParams,
             'query' => $queryParams,
-            'headers'     => $headers,
+            'headers' => $headers,
+        ]);
+        return $response->getBody()->getContents();
+    }
+
+    public function performRequestJson($method, $requestUrl, $jsonData = [], $headers = [])
+    {
+        $client = new Client([
+            'base_uri' => $this->baseUri,
+        ]);
+
+        if (isset($this->secret)) {
+            $headers['Authorization'] = $this->secret;
+        }
+        $headers['Content-Type'] = 'application/json';
+
+        $response = $client->request($method, $requestUrl, [
+            'json' => $jsonData,
+            'headers' => $headers,
         ]);
         return $response->getBody()->getContents();
     }
