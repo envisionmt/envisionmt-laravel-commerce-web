@@ -171,7 +171,7 @@ class ProductController extends Controller
                 'emailAddress' => $attributes['email'],
                 'merchantId' => env('MERCHANT_ID_M1PAY')
             ];
-            $fileName = Storage::path( env('PRIVATE_KEY_M1PAY'));
+            $fileName = Storage::path(env('PRIVATE_KEY_M1PAY'));
             $privateKeyM1pay = file_get_contents($fileName);
             $signedDataEncryptM1pay = $this->rsaService->generateSignature($signedDataM1pay, $privateKeyM1pay);
             $transactionBodyM1pay = [
@@ -195,5 +195,15 @@ class ProductController extends Controller
         }
         $request->session()->flash('success', 'You ordered successful!');
         return redirect()->route('frontend.sites.index');
+    }
+
+    public function callbackData(Request $request)
+    {
+        dd($request->all());
+    }
+
+    public function returnData(Request $request)
+    {
+        dd($request->all());
     }
 }
