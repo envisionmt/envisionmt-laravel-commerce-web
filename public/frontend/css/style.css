@@ -4388,7 +4388,7 @@ h6 {
     display: inline-block;
     color: #2a2a2a;
     text-transform: uppercase;
-    font-weight: 500
+    font-weight: 500;
 }
 
 .cart_inner .table tbody tr.bottom_button td:last-child {
@@ -4573,7 +4573,8 @@ h6 {
     display: inline-block;
     color: #2a2a2a;
     text-transform: uppercase;
-    font-weight: 500
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .check_title h2 {

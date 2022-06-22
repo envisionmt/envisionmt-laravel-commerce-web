@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Products\AddCartRequest;
 use App\Http\Requests\Frontend\Products\CheckoutRequest;
+use App\Http\Requests\Frontend\Products\UpdateCartRequest;
 use App\Models\OrderPayment;
 use App\Repositories\CategoryRepository;
 use App\Repositories\OrderPaymentRepository;
@@ -266,5 +267,21 @@ class ProductController extends Controller
             $request->session()->flash('error', 'Payment on your order has failed. Please process payment again!');
             return redirect()->route('frontend.products.checkout');
         }
+    }
+
+    public function updateCart(UpdateCartRequest $request) {
+        $list = $request->qty;
+        \Cart::destroy();
+        foreach ($list as $key => $qty) {
+            $product = $this->productRepository->getById($key);
+            \Cart::add($product->id, $product->name, $qty, $product->price, 0, $product->toArray());
+        }
+        return redirect()->back();
+    }
+
+    public function clearCart(Request $request) {
+        \Cart::destroy();
+        $request->session()->flash('success', 'All products cleared!');
+        return redirect()->route('frontend.sites.index');
     }
 }
