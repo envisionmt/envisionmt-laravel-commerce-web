@@ -87,7 +87,7 @@ class AuthController extends Controller
      */
     public function register()
     {
-        return view('frontend.auth.login');
+        return view('frontend.auth.register');
     }
 
     /**
@@ -110,7 +110,7 @@ class AuthController extends Controller
             $data['role'] = User::USER_ROLE;
             $this->repository->create($data);
             Session::flash('success', 'You are successfully registered. Please login.');
-            return redirect()->route('frontend.auth.register');
+            return redirect()->route('frontend.sites.index');
         } catch (Exception $exception) {
             Log::error($exception);
             $request->session()->flash('error', 'An error occurred while register user.');

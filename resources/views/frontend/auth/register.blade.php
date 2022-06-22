@@ -3,10 +3,12 @@
 @section('content')
     <div class="container justify-content-center">
         <div class="col-lg-6 mx-auto">
-            <form action="{{ route('frontend.auth.authenticate') }}" method="post">
+            <form action="{{ route('frontend.auth.handle-register') }}" method="post">
             @csrf
             @include('frontend.includes.alert')
-            <!-- Email input -->
+                <div class="form-outline mb-4">
+                    @include('frontend.fields.name')
+                </div>
                 <div class="form-outline mb-4">
                     @include('frontend.fields.email')
                 </div>
@@ -15,31 +17,27 @@
                 <div class="form-outline mb-4">
                     @include('frontend.fields.password')
                 </div>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    @include('frontend.fields.password-confirmation')
+                </div>
 
                 <!-- 2 column grid layout for inline styling -->
                 <div class="row mb-4">
                     <div class="col">
                         <!-- Simple link -->
                         <p>
-                            <a href="{{ route('frontend.auth.register') }}">Register new account?</a>
+                            <a href="#!">Login with your account?</a>
                         </p>
                         <p>
                             <a href="#!">Forgot password?</a>
                         </p>
 
                     </div>
-                    <div class="col d-flex justify-content-center">
-                        <!-- Checkbox -->
-                        <div class="form-check">
-                            <input id="form2Example31" class="form-check-input" name="remember" type="checkbox"
-                                   checked/>
-                            <label class="form-check-label" for="form2Example31"> Remember me </label>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+                <button type="submit" class="btn btn-primary btn-block mb-4">Register New Account</button>
 
             </form>
         </div>
