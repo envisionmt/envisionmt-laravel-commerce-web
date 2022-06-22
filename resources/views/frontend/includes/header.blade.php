@@ -31,10 +31,6 @@
                                     Contact Us
                                 </a>
                             </li>
-                            <li>
-                                <a href="{!! route('frontend.sites.change-language', ['en']) !!}">{{ __('message.english') }}</a>
-                                <a href="{!! route('frontend.sites.change-language', ['zh-CN']) !!}">{{ __('Chinese') }}</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -95,11 +91,9 @@
                                         <i class="ti-shopping-cart">{{ Cart::count() }}</i>
                                     </a>
                                 </li>
-
                                 <li class="nav-item">
-                                    <a href="#" class="icons">
-                                        <i class="ti-user" aria-hidden="true"></i>
-                                    </a>
+                                    <a class="icons" href="{!! route('frontend.sites.change-language', ['en']) !!}">{{ __('message.english') }}</a>
+                                    <a class="icons" href="{!! route('frontend.sites.change-language', ['zh-CN']) !!}">{{ __('Chinese') }}</a>
                                 </li>
                             </ul>
                         </div>
