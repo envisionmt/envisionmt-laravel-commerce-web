@@ -128,7 +128,7 @@
                             <div class="creat_account">
                                 <input type="checkbox" id="term-condition-check" name="term_condition_check"/>
                                 <label for="term-condition-check">I’ve read and accept the </label>
-                                <a href="#">terms & conditions*</a>
+                                <a href="{{ route('frontend.sites.page', 'terms-conditions') }}">terms & conditions*</a>
                                 <span class="error invalid-feedback" id="term-condition-message">Please accept with term & condition before you can order on this website.</span>
                             </div>
                             <button class="main_btn" id="checkout-btn">Proceed to Alipay</button>

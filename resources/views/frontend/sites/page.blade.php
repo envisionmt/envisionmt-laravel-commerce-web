@@ -1,31 +1,22 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <div class="site-section-cover overlay inner-page bg-light"
-         style="background-image: url('/frontend/images/depot_delivery_1.jpg')" data-aos="fade">
-
-        <div class="container">
-            <div class="row align-items-center justify-content-center text-center">
-                <div class="col-lg-10">
-
-                    <div class="box-shadow-content">
-                        <div class="block-heading-1">
-                            <h1 class="mb-4" data-aos="fade-up" data-aos-delay="100">{{ $item->title }}</h1>
-                        </div>
-
-
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content d-md-flex justify-content-between align-items-center">
+                    <div class="mb-3 mb-md-0">
+                        <h2>{{ $item->title }}</h2>
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="site-section">
+    </section>
+    <section class="section_gap">
         <div class="container">
-            <div class="row">
+            <div class="row flex-row-reverse">
                 {!! $item->body !!}
             </div>
         </div>
-    </div>
-
+    </section>
 @endsection

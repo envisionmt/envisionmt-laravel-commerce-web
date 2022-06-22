@@ -33,6 +33,10 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <p>
+                                                <strong>Slug:</strong>
+                                                {{ $item->slug }}
+                                            </p>
+                                            <p>
                                                 <strong>Title English:</strong>
                                                 {{ $item->title_english }}
                                             </p>
