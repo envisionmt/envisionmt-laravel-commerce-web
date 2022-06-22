@@ -12,11 +12,13 @@ use App\Repositories\OrderPaymentRepository;
 use App\Repositories\ProductRepository;
 use App\Services\CommonService;
 use App\Services\RSAService;
+use App\Traits\ApiResponser;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -25,6 +27,7 @@ use Jenssegers\Agent\Agent;
 
 class ProductController extends Controller
 {
+    use ApiResponser;
     private $productRepository;
     private $categoryRepository;
     private $orderPaymentRepository;
@@ -200,7 +203,42 @@ class ProductController extends Controller
 
     public function callbackData(Request $request)
     {
-        dd($request->all());
+        $attributes = $request->only(['transactionAmount', 'fpxTxnId', 'sellerOrderNo', 'status', 'merchantOrderNo', 'signedData']);
+        Log::info('thanh', $attributes);
+        $signAttributes = [
+            $attributes['transactionAmount'],
+            $attributes['fpxTxnId'],
+            $attributes['sellerOrderNo'],
+            $attributes['status'],
+            $attributes['merchantOrderNo']
+        ];
+        $fileName = Storage::path(env('PUBLIC_KEY_M1PAY'));
+        $publicKey = file_get_contents($fileName);
+        $signedData = $attributes['signedData'];
+        if (!$this->rsaService->verifySignature($signAttributes, $signedData, $publicKey)) {
+            return $this->errorMessage('Your signature is wrong', Response::HTTP_BAD_REQUEST);
+        }
+        $orderPayment = $this->orderPaymentRepository->getByColumn($attributes['merchantOrderNo'], 'order_no');
+        $oldStatus = $orderPayment->status;
+        $orderPayment->out_order_no = $attributes['sellerOrderNo'];
+        $status = array_search($attributes['status'], OrderPayment::$statusNames);
+        if (!$status) {
+            return $this->errorMessage('Your status is wrong', Response::HTTP_BAD_REQUEST);
+        }
+        $orderPayment->save();
+        if ($oldStatus != $status) {
+
+            $orderPayment->status = $status;
+            $orderPayment->save();
+
+            if ($status === OrderPayment::TRADE_FINISHED_STATUS) {
+                return $this->successResponse('Your order has been updated!');
+            } else if ($status === OrderPayment::TRADE_CLOSE_STATUS) {
+                return $this->successResponse('This payment was closed!');
+            }
+        } else {
+            return $this->errorMessage('Your status is same old status', Response::HTTP_BAD_REQUEST);
+        }
     }
 
     public function returnData(Request $request)
@@ -213,8 +251,7 @@ class ProductController extends Controller
         if (!$status) {
             $request->session()->flash('error', 'Payment on your order has failed. Please process payment again!');
             return redirect()->route('frontend.products.checkout');
-        }
-        else if ($oldStatus == OrderPayment::PENDING_STATUS && $status == OrderPayment::SUCCESSFUL_STATUS) {
+        } else if ($oldStatus == OrderPayment::PENDING_STATUS && $status == OrderPayment::SUCCESSFUL_STATUS) {
             $orderPayment->status = $status;
             $orderPayment->save();
             \Cart::destroy();
