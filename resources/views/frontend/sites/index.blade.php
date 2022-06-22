@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="product-btm">
-                                <a href="#" class="d-block">
+                                <a href="{{ route('frontend.products.show', $featuredProduct->id) }}" class="d-block">
                                     <h4>{{ $featuredProduct->name }}</h4>
                                 </a>
                                 <div class="mt-3">
@@ -165,7 +165,7 @@
                                         </div>
                                     </div>
                                     <div class="product-btm">
-                                        <a href="#" class="d-block">
+                                        <a href="{{ route('frontend.products.show', $newProduct->id) }}" class="d-block">
                                             <h4>{{ $newProduct->name }}</h4>
                                         </a>
                                         <div class="mt-3">
@@ -216,7 +216,7 @@
                                 </div>
                             </div>
                             <div class="product-btm">
-                                <a href="#" class="d-block">
+                                <a href="{{ route('frontend.products.show', $product->id) }}" class="d-block">
                                     <h4>{{ $product->name }}</h4>
                                 </a>
                                 <div class="mt-3">

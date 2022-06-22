@@ -66,6 +66,13 @@
                                 </td>
                             </tr>
                         @endforeach
+                        <tr>
+                            <td></td>
+                            <td colspan="3">
+                                <a class="gray_btn" href="{{ route('frontend.products.index') }}">Update Cart</a>
+                                <a class="gray_btn" href="{{ route('frontend.products.checkout') }}">Clear Cart</a>
+                            </td>
+                        </tr>
                         <tr class="shipping_area">
                             <td></td>
                             <td></td>
