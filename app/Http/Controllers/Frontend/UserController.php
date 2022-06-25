@@ -64,6 +64,8 @@ class UserController extends Controller
 
     public function invoice()
     {
+        $orderPayments = $this->orderPaymentRepository->where('user_id', authUserId())->paginate();
+        return view('frontend.user.invoice', compact('orderPayments'));
     }
 
 }

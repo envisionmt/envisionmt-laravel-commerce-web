@@ -55,9 +55,9 @@
                                         <a class="nav-link"
                                            href="{{ route('frontend.user.profile') }}">Profile</a>
                                     </li>
-                                    <li class="nav-item {{ $route->named('frontend.user.profile') ? 'active' : '' }}">
+                                    <li class="nav-item {{ $route->named('frontend.user.invoice') ? 'active' : '' }}">
                                         <a class="nav-link"
-                                           href="{{ route('frontend.user.profile') }}">Invoice</a>
+                                           href="{{ route('frontend.user.invoice') }}">Invoice</a>
                                     </li>
                                 @else
                                     <li class="nav-item">
