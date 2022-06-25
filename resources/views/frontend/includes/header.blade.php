@@ -49,21 +49,22 @@
                                     <a class="nav-link"
                                        href="{{ route('frontend.sites.contact-us') }}">Contact</a>
                                 </li>
-                                <li class="nav-item">
-                                    @if(Auth()->check())
-                                        <a href="{{ route('frontend.auth.logout') }}" class="nav-link"
-                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
-                                            out</a>
-                                        <form id="logout-form" action="{{ route('frontend.auth.logout') }}"
-                                              method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    @else
+
+                                @if(Auth()->check())
+                                    <li class="nav-item {{ $route->named('frontend.user.profile') ? 'active' : '' }}">
+                                        <a class="nav-link"
+                                           href="{{ route('frontend.user.profile') }}">Profile</a>
+                                    </li>
+                                    <li class="nav-item {{ $route->named('frontend.user.profile') ? 'active' : '' }}">
+                                        <a class="nav-link"
+                                           href="{{ route('frontend.user.profile') }}">Invoice</a>
+                                    </li>
+                                @else
+                                    <li class="nav-item">
                                         <a class="nav-link {{ $route->named('frontend.auth.login') ? 'active' : '' }}"
                                            href="{{ route('frontend.auth.login') }}">Login</a>
-                                    @endif
-
-                                </li>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
 
@@ -75,8 +76,10 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="icons" href="{!! route('frontend.sites.change-language', ['en']) !!}">{{ __('message.english') }}</a>
-                                    <a class="icons" href="{!! route('frontend.sites.change-language', ['zh-CN']) !!}">{{ __('Chinese') }}</a>
+                                    <a class="icons"
+                                       href="{!! route('frontend.sites.change-language', ['en']) !!}">{{ __('message.english') }}</a>
+                                    <a class="icons"
+                                       href="{!! route('frontend.sites.change-language', ['zh-CN']) !!}">{{ __('Chinese') }}</a>
                                 </li>
                             </ul>
                         </div>
