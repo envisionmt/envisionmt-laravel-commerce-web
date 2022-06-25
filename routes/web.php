@@ -58,6 +58,6 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
 
 
     Route::group(['middleware' => ['auth.user']], function () {
-
+        require 'web/frontend/user.php';
     });
 });

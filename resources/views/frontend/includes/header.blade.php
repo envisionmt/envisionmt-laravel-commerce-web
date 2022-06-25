@@ -15,23 +15,6 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="float-right">
-                        <ul class="right_side">
-                            <li>
-                                <a href="cart.html">
-                                    gift card
-                                </a>
-                            </li>
-                            <li>
-                                <a href="tracking.html">
-                                    track order
-                                </a>
-                            </li>
-                            <li>
-                                <a href="contact.html">
-                                    Contact Us
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
