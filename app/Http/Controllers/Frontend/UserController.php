@@ -16,6 +16,7 @@ class UserController extends Controller
 {
 
     private $userRepository;
+    private $orderPaymentRepository;
     /**
      * Constructor.
      * @param UserRepository $userRepository
@@ -25,6 +26,7 @@ class UserController extends Controller
                                 OrderPaymentRepository $orderPaymentRepository)
     {
         $this->userRepository = $userRepository;
+        $this->orderPaymentRepository = $orderPaymentRepository;
     }
 
     public function profile()
