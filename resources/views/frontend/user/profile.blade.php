@@ -18,7 +18,7 @@
         </div>
     </section>
 
-    <section class="content">
+    <section class="content mt-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -28,13 +28,20 @@
                                 <img class="profile-user-img img-fluid img-circle" src="{{ asset('backend/img/avatar.png') }}" alt="User profile picture">
                             </div>
 
-                            <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                            <h4 class="profile-username text-center">{{ $user->name }}</h4>
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
                                     <b>Email: </b> <a>{{ $user->email }}</a>
                                 </li>
                             </ul>
+                            <a href="{{ route('frontend.auth.logout') }}" class="nav-link"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
+                                out</a>
+                            <form id="logout-form" action="{{ route('frontend.auth.logout') }}"
+                                  method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </div>
