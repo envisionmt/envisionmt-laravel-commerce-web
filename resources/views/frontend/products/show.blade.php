@@ -31,18 +31,6 @@
                             class="carousel slide"
                             data-ride="carousel"
                         >
-                            <ol class="carousel-indicators">
-                                <li
-                                    data-target="#carouselExampleIndicators"
-                                    data-slide-to="0"
-                                    class="active"
-                                >
-                                    <img
-                                        src="{{ $item->image }}"
-                                        alt=""
-                                    />
-                                </li>
-                            </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img
@@ -69,9 +57,7 @@
                                 <a href="#"> <span>Availibility</span> : {{ $item->stock_status_name }}</a>
                             </li>
                         </ul>
-                        <p>
-                            {{ $item->description }}
-                        </p>
+                        {!! $item->content !!}
                         <form action="{{ route('frontend.products.addCart') }}" method="POST">
                             @csrf
                             <div class="product_count">

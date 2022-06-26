@@ -32,7 +32,7 @@ class Product extends Model
     const HOT_TYPE = 3;
     const SALE_TYPE = 4;
 
-    protected $appends = ['name', 'description'];
+    protected $appends = ['name', 'content'];
 
     /**
      * The attributes that are mass assignable.
@@ -101,12 +101,12 @@ class Product extends Model
         }
     }
 
-    public function getDescriptionAttribute()
+    public function getContentAttribute()
     {
         if (Lang::locale() == self::ENGLISH_KEY) {
-            return $this->description_english;
+            return $this->content_english;
         } else {
-            return $this->description_chinese;
+            return $this->content_chinese;
         }
     }
 
