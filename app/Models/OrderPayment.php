@@ -142,7 +142,7 @@ class OrderPayment extends Model
 
     public function products()
     {
-        return $this->belongstoMany(Product::class);
+        return $this->belongstoMany(Product::class)->withPivot('price', 'total', 'quantity');
     }
 
     public static $statusNames = [

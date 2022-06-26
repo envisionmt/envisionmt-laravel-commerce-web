@@ -9,6 +9,7 @@ use App\Http\Requests\Frontend\Users\ProfileUpdateRequest;
 use App\Repositories\OrderPaymentRepository;
 use App\Repositories\UserRepository;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -62,10 +63,19 @@ class UserController extends Controller
         return redirect()->route('frontend.user.profile');
     }
 
-    public function invoice()
+    public function invoice(Request $request)
     {
-        $orderPayments = $this->orderPaymentRepository->where('user_id', authUserId())->paginate();
-        return view('frontend.user.invoice', compact('orderPayments'));
+        $list = $this->orderPaymentRepository->where('user_id', authUserId())->orderBy('created_at', 'desc')->paginate();
+        return view('frontend.user.invoice', compact('list'));
+    }
+
+    public function invoiceDetail(Request $request, $id)
+    {
+        $orderPayment = $this->orderPaymentRepository
+            ->where('user_id', authUserId())
+            ->where('id', $id)
+            ->first();
+        return view('frontend.user.invoice-detail', compact('orderPayment'));
     }
 
 }
