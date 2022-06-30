@@ -39,7 +39,7 @@
                             <tr class="ui-state-default">
                                 <td>{{ $item->order_no }}</td>
                                 <td>{{ $item->description }}</td>
-                                <td>{{ $item->transaction_amount_origin }}</td>
+                                <td>{{ $item->transaction_amount_origin }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</td>
                                 <td>{{ $item->status_name }}</td>
                                 <td>{{ $item->shipping_status_name }}</td>
                                 <td class="text-center">{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
