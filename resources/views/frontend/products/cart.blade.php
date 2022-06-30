@@ -39,7 +39,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <h5>${{ $item->options->price }}</h5>
+                                        <h5>{{ $item->options->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</h5>
                                     </td>
                                     <td>
                                         <div class="product_count">
@@ -67,7 +67,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <h5>${{ $item->qty * $item->price }}</h5>
+                                        <h5>{{ $item->qty * $item->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</h5>
                                     </td>
                                 </tr>
                             @endforeach

@@ -46,7 +46,7 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="s_product_text">
                         <h3>{{ $item->name }}</h3>
-                        <h2>${{ $item->price }}</h2>
+                        <h2>{{ $item->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</h2>
                         <ul class="list">
                             <li>
                                 <a class="active" href="#">

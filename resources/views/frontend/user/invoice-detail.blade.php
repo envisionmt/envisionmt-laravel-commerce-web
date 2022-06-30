@@ -74,13 +74,13 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>${{ $item->pivot->price }}</h5>
+                                    <h5>{{ $item->pivot->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</h5>
                                 </td>
                                 <td>
                                     <h5>{{ $item->pivot->quantity }}</h5>
                                 </td>
                                 <td>
-                                    <h5>${{ $item->pivot->total }}</h5>
+                                    <h5>{{ $item->pivot->total }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</h5>
                                 </td>
                             </tr>
                         @endforeach
