@@ -9,7 +9,7 @@
         </div>
 
 
-        <div class="page-content faq">
+        <div class="page-content faq mb-5">
             <div class="container">
                 <section class="content-title-section  col-lg-6 mx-auto">
                     <div class="text-center mt-10 mb-10">

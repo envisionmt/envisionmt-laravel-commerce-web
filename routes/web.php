@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 // Auth
 require 'web/auth.php';
-// Social networks
-require 'web/facebook.php';
-require 'web/google.php';
 
 /*
 *
@@ -62,7 +59,7 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
 //    require 'web/frontend/auth.php';
 
 
-    Route::group(['middleware' => ['auth.user']], function () {
+    Route::group(['middleware' => ['verified', 'auth.user']], function () {
         require 'web/frontend/user.php';
     });
 });
