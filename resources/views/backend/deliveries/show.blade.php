@@ -8,8 +8,8 @@
                     <h1 class="m-0 text-dark">Delivery Information</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('backend.introduction-types.index') }}" class="btn btn-default mr-2">Back</a>
-                    <a href="{{ route('backend.introduction-types.edit', $item->id) }}" class="btn btn-info">
+                    <a href="{{ route('backend.deliveries.index') }}" class="btn btn-default mr-2">Back</a>
+                    <a href="{{ route('backend.deliveries.edit', $item->id) }}" class="btn btn-info">
                         <i class="fas fa-edit"></i> Edit
                     </a>
                 </div>

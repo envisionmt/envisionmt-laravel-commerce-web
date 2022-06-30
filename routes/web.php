@@ -25,6 +25,10 @@ require 'web/google.php';
 *
 * --------------------------------------------------------------------
 */
+
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['web']], function () {
+    require 'web/backend/auth.php';
+});
 Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', 'web', 'auth.admin']], function () {
 
     require 'web/backend/sites.php';
@@ -43,7 +47,6 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'backend.',
     require 'web/backend/log.php';
 });
 
-
 /*
 *
 * Frontend Routes
@@ -54,10 +57,14 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
 
     require 'web/frontend/products.php';
     require 'web/frontend/sites.php';
-    require 'web/frontend/auth.php';
+    // Auth
+
+//    require 'web/frontend/auth.php';
 
 
     Route::group(['middleware' => ['auth.user']], function () {
         require 'web/frontend/user.php';
     });
 });
+
+

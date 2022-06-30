@@ -4,14 +4,23 @@
     <main class="main login-page">
         <div class="page-header">
             <div class="container">
-                <h1 class="page-title mb-0 text-center">Login</h1>
+                <h1 class="page-title mb-0 text-center">Register</h1>
             </div>
         </div>
         <div class="page-content">
             <div class="container">
-                <div class="col-lg-6 mx-auto">
-                    <form method="POST" action="{{ route('login') }}">
+                <div class="login-popup col-lg-6 mx-auto">
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Name" name="name" value="{{ old('name') }}">
+                            @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                         <div class="form-group">
                             <label for="email">Email *</label>
                             <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Email address" name="email" value="{{ old('email') }}">
@@ -30,15 +39,19 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="form-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label for="remember">Remember me</label>
-                            <a href="{{ route('password.request') }}">Forgot your password?</a>
+                        <div class="form-group">
+                            <label for="password">Password Confirmation *</label>
+                            <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password" placeholder="Password Confirmation" name="password_confirmation">
+                            @error('password_confirmation')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
                         <p class="mt-5">
-                            <a class="btn btn-link" href="{{ route('register') }}">
-                                Haven't account? Register now
+                            <a class="btn btn-link" href="{{ route('login') }}">
+                                Already member? Login Now
                             </a>
                         </p>
                     </form>

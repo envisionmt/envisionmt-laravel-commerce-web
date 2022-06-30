@@ -16,8 +16,8 @@
                         <p>Very us move be blessed multiply night</p>
                     </div>
                     <div class="page_link">
-                        <a href="index.html">Home</a>
-                        <a href="checkout.html">Product Checkout</a>
+                        <a href="{{ route('frontend.sites.index') }}">Home</a>
+                        <a href="{{ route('frontend.products.checkout') }}">Product Checkout</a>
                     </div>
                 </div>
             </div>
@@ -100,6 +100,12 @@
                                     <a href="#"
                                     >Subtotal
                                         <span>${{ Cart::subtotal() }}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                    >Discount
+                                        <span>0.00 %</span>
                                     </a>
                                 </li>
                                 <li>

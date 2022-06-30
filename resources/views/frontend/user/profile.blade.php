@@ -35,10 +35,10 @@
                                     <b>Email: </b> <a>{{ $user->email }}</a>
                                 </li>
                             </ul>
-                            <a href="{{ route('frontend.auth.logout') }}" class="nav-link"
+                            <a href="{{ route('logout') }}" class="nav-link"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
                                 out</a>
-                            <form id="logout-form" action="{{ route('frontend.auth.logout') }}"
+                            <form id="logout-form" action="{{ route('logout') }}"
                                   method="POST" style="display: none;">
                                 @csrf
                             </form>

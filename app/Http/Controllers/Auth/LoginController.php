@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -39,18 +39,18 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectPath()
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param Request $request
+     *
+     * @return array
+     */
+    protected function credentials(Request $request)
     {
-        if (method_exists($this, 'redirectTo')) {
-            return $this->redirectTo();
-        }
+        $data = $request->only($this->username(), 'password');
+        $data['role'] = User::USER_ROLE;
 
-        $redirectPage = RouteServiceProvider::HOME;
-        if(Auth::user()->role === User::ADMIN_ROLE) {
-            $redirectPage = RouteServiceProvider::ADMIN_HOME;
-        }
-
-        return $redirectPage;
-//        return property_exists($this, 'redirectTo') ? $this->redirectTo : $redirectPage;
+        return $data;
     }
 }

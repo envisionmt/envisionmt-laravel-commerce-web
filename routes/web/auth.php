@@ -1,3 +1,3 @@
 <?php
 
-Auth::routes(['register' => false]);
+Auth::routes(['verify' => true]);

@@ -37,9 +37,9 @@
                 <!-- Menu Footer-->
                 <li class="user-footer">
                     <a href="{{ route('backend.profile.show') }}" class="btn btn-default btn-flat">Profile</a>
-                    <a href="{{ route('logout') }}" class="btn btn-default btn-flat float-right"
+                    <a href="{{ route('backend.auth.logout') }}" class="btn btn-default btn-flat float-right"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('backend.auth.logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                 </li>

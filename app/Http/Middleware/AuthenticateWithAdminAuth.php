@@ -25,7 +25,7 @@ class AuthenticateWithAdminAuth
             $request->user()->role !== User::ADMIN_ROLE) {
             return $request->expectsJson()
                 ? abort(403, 'You can not access this page.')
-                : Redirect::guest(URL::route($redirectToRoute ?: 'frontend.sites.index'));
+                : Redirect::guest(URL::route($redirectToRoute ?: 'backend.sites.index'));
         }
 
         return $next($request);

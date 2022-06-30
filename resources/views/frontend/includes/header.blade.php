@@ -61,8 +61,8 @@
                                     </li>
                                 @else
                                     <li class="nav-item">
-                                        <a class="nav-link {{ $route->named('frontend.auth.login') ? 'active' : '' }}"
-                                           href="{{ route('frontend.auth.login') }}">Login</a>
+                                        <a class="nav-link {{ $route->named('login') ? 'active' : '' }}"
+                                           href="{{ route('login') }}">Login</a>
                                     </li>
                                 @endif
                             </ul>

@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\FrontEnd;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Frontend\Auth\AuthLoginRequest;
-use App\Http\Requests\Frontend\Auth\AuthRegisterRequest;
+use App\Http\Requests\Backend\Auth\AuthLoginRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Exception;
@@ -41,7 +40,7 @@ class AuthController extends Controller
      */
     public function login()
     {
-        return view('frontend.auth.login');
+        return view('backend.auth.login');
     }
 
     /**
@@ -57,7 +56,7 @@ class AuthController extends Controller
             $credentials = [
                 'email' => $request->get('email'),
                 'password' => $request->get('password'),
-                'role' => User::USER_ROLE
+                'role' => User::ADMIN_ROLE
             ];
 
             $remember = !empty($request->get('remember'));
@@ -67,65 +66,23 @@ class AuthController extends Controller
                     session()->forget('oldUrl');
                     return redirect($oldUrl);
                 }
-                return redirect()->route('frontend.sites.index');
+                return redirect()->route('backend.sites.index');
             }
 
             Session::flash('error', 'The email address or password is incorrect.');
 
-            return redirect()->route('frontend.auth.login');
+            return redirect()->route('backend.auth.login');
         } catch (Exception $exception) {
             Log::error($exception);
             $request->session()->flash('error', 'An error occurred while login user.');
-            return redirect()->route('frontend.auth.login');
+            return redirect()->route('backend.auth.login');
         }
     }
 
-    /**
-     * Show form register
-     *
-     * @return RedirectResponse|View
-     */
-    public function register()
-    {
-        return view('frontend.auth.register');
-    }
 
-    /**
-     * Handle register user.
-     *
-     * @param AuthRegisterRequest $request Request
-     *
-     * @return RedirectResponse
-     */
-    public function handleRegister(AuthRegisterRequest $request)
-    {
-        try {
-
-            $data = $request->only([
-                'name',
-                'email',
-                'password'
-            ]);
-            $data['password'] = bcrypt($data['password']);
-            $data['role'] = User::USER_ROLE;
-            $this->repository->create($data);
-            Session::flash('success', 'You are successfully registered. Please login.');
-            return redirect()->route('frontend.sites.index');
-        } catch (Exception $exception) {
-            Log::error($exception);
-            $request->session()->flash('error', 'An error occurred while register user.');
-            return redirect()->route('frontend.auth.register');
-        }
-    }
-
-    /**
-     * Log out
-     *
-     * @return RedirectResponse
-     */
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('frontend.auth.login');
+        return redirect()->route('backend.auth.login');
     }
 }

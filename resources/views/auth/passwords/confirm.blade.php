@@ -1,36 +1,42 @@
-@extends('auth.layouts.app')
+@extends('frontend.layouts.app')
 
 @section('content')
-    <div class="login-box">
-        <div class="card">
-            <div class="card-body login-card-body">
-                <div class="login-logo">Administrator</div>
-                <p class="login-box-msg">Please confirm your password before continuing.</p>
-
-                <form action="{{ route('password.confirm') }}" method="post">
-                    @csrf
-
-                    <div class="mb-3">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="current-password">
-
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">Confirm password</button>
-                        </div>
-                    </div>
-                </form>
-
-                <p class="mt-3 mb-1 text-center">
-                    <a href="{{ route('password.request') }}">Forgot Your Password?</a>
-                </p>
+    <main class="main login-page">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title mb-0 text-center">Confirm password</h1>
             </div>
         </div>
-    </div>
+
+        <div class="page-content">
+            <div class="container">
+                <div class="login-popup col-lg-6 mx-auto">
+                    <form method="POST" action="{{ route('password.confirm') }}">
+                        @csrf
+                        <p class="text-center mb-5">
+                            Please confirm your password before continuing.
+                        </p>
+
+                        <div class="form-group">
+                            <label for="password">Password *</label>
+                            <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" required autocomplete="password" placeholder="Password">
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Confirm Password</button>
+
+                        <p class="mt-3">
+                            <a href="{{ route('password.request') }}">
+                                Forgot Your Password?
+                            </a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
 @endsection

@@ -1,38 +1,37 @@
-@extends('auth.layouts.app')
+@extends('frontend.layouts.app')
 
 @section('content')
-    <div class="login-box">
-        <div class="card">
-            <div class="card-body login-card-body">
-                <div class="login-logo">Administrator</div>
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-                <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
-
-                <form action="{{ route('password.email') }}" method="post">
-                    @csrf
-                    <div class="mb-3">
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">Request new password</button>
-                        </div>
-                    </div>
-                </form>
-
-                <p class="mt-3 mb-1 text-center">
-                    <a href="{{ route('login') }}">Click here to login</a>
-                </p>
+    <main class="main login-page">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title mb-0 text-center">Reset password</h1>
             </div>
         </div>
-    </div>
+
+        <div class="page-content mb-5">
+            <div class="container">
+                <div class="login-popup col-lg-6 mx-auto">
+                    @if (session('status'))
+                        <div class="alert alert-success mb-5" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <form method="POST" action="{{ route('password.email') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" required placeholder="E-Mail Address">
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Send Password Reset Link</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
 @endsection
