@@ -72,7 +72,8 @@
                             <ul class="nav navbar-nav navbar-right right_nav pull-right">
                                 <li class="nav-item">
                                     <a href="{{ route('frontend.products.cart') }}" class="icons">
-                                        <i class="ti-shopping-cart">{{ Cart::count() }}</i>
+                                        <i class="ti-shopping-cart"></i>
+                                        <span class="nav-shop__circle">{{ Cart::count() }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
