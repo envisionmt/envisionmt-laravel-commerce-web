@@ -4,7 +4,7 @@
     <main class="main login-page">
         <div class="page-header">
             <div class="container">
-                <h1 class="page-title mb-0 text-center">Login</h1>
+                <h1 class="page-title mb-0 text-center">{{ __('message.login') }}</h1>
             </div>
         </div>
         <div class="page-content">
@@ -22,8 +22,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="password">Password *</label>
-                            <input class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Password" name="password">
+                            <label for="password">{{ __('message.password') }} *</label>
+                            <input class="form-control @error('password') is-invalid @enderror" type="password" placeholder="{{ __('message.password') }}" name="password">
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -32,13 +32,13 @@
                         </div>
                         <div class="form-checkbox d-flex align-items-center justify-content-between">
                             <input type="checkbox" class="custom-checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label for="remember">Remember me</label>
-                            <a href="{{ route('password.request') }}">Forgot your password?</a>
+                            <label for="remember">{{ __('message.remember_me') }}</label>
+                            <a href="{{ route('password.request') }}">{{ __('message.forgot_your_password') }}</a>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                        <button type="submit" class="btn btn-primary w-100">{{ __('message.login') }}</button>
                         <p class="mt-5">
                             <a class="btn btn-link" href="{{ route('register') }}">
-                                Haven't account? Register now
+                                {{ __('message.havent_account_register_now') }}
                             </a>
                         </p>
                     </form>

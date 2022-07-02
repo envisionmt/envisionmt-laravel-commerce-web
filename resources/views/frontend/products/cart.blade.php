@@ -14,10 +14,10 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
+                                <th scope="col">{{ __('message.product') }}</th>
+                                <th scope="col">{{ __('message.price') }}</th>
+                                <th scope="col">{{ __('message.quantity') }}</th>
+                                <th scope="col">{{ __('message.total') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -72,17 +72,16 @@
                                 </tr>
                             @endforeach
                             <tr>
-                                <td></td>
-                                <td colspan="3">
-                                    <button class="gray_btn" type="submit">Update Cart</button>
-                                    <button type="button" id="clear-cart-btn" class="gray_btn">Clear Cart</button>
+                                <td colspan="4">
+                                    <button class="gray_btn" type="submit">{{ __('message.update_cart') }}</button>
+                                    <button type="button" id="clear-cart-btn" class="gray_btn">{{ __('message.clear_cart') }}</button>
                                 </td>
                             </tr>
                             <tr class="shipping_area">
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <h5>Shipping</h5>
+                                    <h5>{{ __('message.shipping') }}</h5>
                                 </td>
                                 <td>
                                     <div class="shipping_box">
@@ -95,7 +94,7 @@
                                             </li>
                                         </ul>
                                         <h6>
-                                            Calculate Shipping
+                                            {{ __('message.calculate_shipping') }}
                                             <i class="fa fa-caret-down" aria-hidden="true"></i>
                                         </h6>
                                         <select id="shipping_destination_id" class="shipping_select">
@@ -113,7 +112,7 @@
                                                 <option value="{{ $paymentMethod->id }}">{{ $paymentMethod->name }}</option>
                                             @endforeach
                                         </select>
-                                        <button class="gray_btn" >Update Details</button>
+                                        <button class="gray_btn">{{ __('message.update_details') }}</button>
                                     </div>
                                 </td>
                             </tr>
@@ -123,10 +122,8 @@
                                 <td></td>
                                 <td>
                                     <div class="checkout_btn_inner">
-                                        <a class="gray_btn" href="{{ route('frontend.products.index') }}">Continue
-                                            Shopping</a>
-                                        <a class="main_btn" href="{{ route('frontend.products.checkout') }}">Proceed to
-                                            checkout</a>
+                                        <a class="gray_btn" href="{{ route('frontend.products.index') }}">{{ __('message.continue_shopping') }}</a>
+                                        <a class="main_btn" href="{{ route('frontend.products.checkout') }}">{{ __('message.proceed_to_checkout') }}</a>
                                     </div>
                                 </td>
                             </tr>

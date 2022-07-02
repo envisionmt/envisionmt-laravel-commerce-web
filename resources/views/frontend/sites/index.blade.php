@@ -13,7 +13,7 @@
                         <p class="sub text-uppercase">{{ $introduction->title }}</p>
                         <h3>{!! $introduction->sub_title  !!}</h3>
                         <h4>{{ $introduction->description }}</h4>
-                        <a class="main_btn mt-40" href="{{ $introduction->link }}">View Collection</a>
+                        <a class="main_btn mt-40" href="{{ $introduction->link }}">{{ __('message.view_collection') }}</a>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                     <div class="offer_content">
                         <h3 class="text-uppercase mb-40">{{ $saleOffIntroduction->title }}</h3>
                         <h2 class="text-uppercase">{{ $saleOffIntroduction->sub_title }}</h2>
-                        <a href="{{ $saleOffIntroduction->link }}" class="main_btn mb-20 mt-5">Discover Now</a>
+                        <a href="{{ $saleOffIntroduction->link }}" class="main_btn mb-20 mt-5">{{ __('message.discover_now') }}</a>
                         <p>{{ $saleOffIntroduction->description }}</p>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                             @csrf
                             <input name="product_id" type="hidden" value="{{ $hotProduct->id }}">
                             <input name="qty" type="hidden" value="1">
-                            <button type="submit" class="main_btn">Add to cart</button>
+                            <button type="submit" class="main_btn">{{ __('message.add_to_cart') }}</button>
                         </form>
                     </div>
                 </div>

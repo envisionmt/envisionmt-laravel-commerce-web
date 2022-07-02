@@ -13,12 +13,12 @@
             <div class="container">
                 <div class="banner_content d-md-flex justify-content-between align-items-center">
                     <div class="mb-3 mb-md-0">
-                        <h2>Shop Category</h2>
-                        <p>Very us move be blessed multiply night</p>
+                        <h2>{{ __('message.shop_category') }}</h2>
+                        <p>{{ __('message.very_us_move_be_blessed_multiply_night') }}</p>
                     </div>
                     <div class="page_link">
-                        <a href="{{ route('frontend.sites.index') }}">Home</a>
-                        <a href="{{ route('frontend.products.index') }}">Shop</a>
+                        <a href="{{ route('frontend.sites.index') }}">{{ __('message.home') }}</a>
+                        <a href="{{ route('frontend.products.index') }}">{{ __('message.shop') }}</a>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                     <div class="left_sidebar_area">
                         <aside class="left_widgets p_filter_widgets">
                             <div class="l_w_title">
-                                <h3>Browse Categories</h3>
+                                <h3>{{ __('message.browse_categories') }}</h3>
                             </div>
                             <div class="widgets_inner">
                                 <ul class="list">

@@ -40,29 +40,29 @@
                         <div class="col-lg-7 pr-0">
                             <ul class="nav navbar-nav center_nav pull-right">
                                 <li class="nav-item {{ $route->named('frontend.sites.index') ? 'active' : '' }}"><a
-                                        href="{{ route('frontend.sites.index') }}" class="nav-link">Home</a></li>
+                                        href="{{ route('frontend.sites.index') }}" class="nav-link">{{ __('message.home') }}</a></li>
                                 <li class="nav-item {{ $route->named('frontend.sites.about') ? 'active' : '' }}"><a
-                                        href="{{ route('frontend.sites.about') }}" class="nav-link">About</a></li>
+                                        href="{{ route('frontend.sites.about') }}" class="nav-link">{{ __('message.about') }}</a></li>
                                 <li class="nav-item {{ $route->named('frontend.products.index') ? 'active' : '' }}"><a
-                                        href="{{ route('frontend.products.index') }}" class="nav-link">Shop</a></li>
+                                        href="{{ route('frontend.products.index') }}" class="nav-link">{{ __('message.shop') }}</a></li>
                                 <li class="nav-item {{ $route->named('frontend.sites.contact-us') ? 'active' : '' }}">
                                     <a class="nav-link"
-                                       href="{{ route('frontend.sites.contact-us') }}">Contact</a>
+                                       href="{{ route('frontend.sites.contact-us') }}">{{ __('message.contact') }}</a>
                                 </li>
 
                                 @if(Auth()->check())
                                     <li class="nav-item {{ $route->named('frontend.user.profile') ? 'active' : '' }}">
                                         <a class="nav-link"
-                                           href="{{ route('frontend.user.profile') }}">Profile</a>
+                                           href="{{ route('frontend.user.profile') }}">{{ __('message.profile') }}</a>
                                     </li>
                                     <li class="nav-item {{ $route->named('frontend.user.invoice') ? 'active' : '' }}">
                                         <a class="nav-link"
-                                           href="{{ route('frontend.user.invoice') }}">Invoice</a>
+                                           href="{{ route('frontend.user.invoice') }}">{{ __('message.invoice') }}</a>
                                     </li>
                                 @else
                                     <li class="nav-item">
                                         <a class="nav-link {{ $route->named('login') ? 'active' : '' }}"
-                                           href="{{ route('login') }}">Login</a>
+                                           href="{{ route('login') }}">{{ __('message.login') }}</a>
                                     </li>
                                 @endif
                             </ul>
@@ -80,7 +80,7 @@
                                     <a class="icons"
                                        href="{!! route('frontend.sites.change-language', ['en']) !!}">{{ __('message.english') }}</a>
                                     <a class="icons"
-                                       href="{!! route('frontend.sites.change-language', ['zh-CN']) !!}">{{ __('Chinese') }}</a>
+                                       href="{!! route('frontend.sites.change-language', ['zh-CN']) !!}">{{ __('message.chinese') }}</a>
                                 </li>
                             </ul>
                         </div>

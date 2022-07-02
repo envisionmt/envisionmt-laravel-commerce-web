@@ -10,8 +10,8 @@
                         <h2>Invoice</h2>
                     </div>
                     <div class="page_link">
-                        <a href="{{ route('frontend.sites.index') }}">Home</a>
-                        <a href="{{ route('frontend.user.invoice') }}">Invoice</a>
+                        <a href="{{ route('frontend.sites.index') }}">{{ __('message.home') }}</a>
+                        <a href="{{ route('frontend.user.invoice') }}">{{ __('message.invoice') }}</a>
                     </div>
                 </div>
             </div>
@@ -25,13 +25,13 @@
                     <table class="table table-hovercode" id="table-list">
                         <thead>
                         <tr>
-                            <th>Order No</th>
-                            <th>Order Request</th>
-                            <th>Transaction Amount</th>
-                            <th>Order Status</th>
-                            <th>Shipping Status</th>
-                            <th class="text-center">Created at</th>
-                            <th class="text-center">Action</th>
+                            <th>{{ __('message.order_no') }}</th>
+                            <th>{{ __('message.order_request') }}</th>
+                            <th>{{ __('message.transaction _amount') }}</th>
+                            <th>{{ __('message.order_status') }}</th>
+                            <th>{{ __('message.shipping_status') }}</th>
+                            <th class="text-center">{{ __('message.created_at') }}</th>
+                            <th class="text-center">{{ __('message.action') }}</th>
                         </tr>
                         </thead>
                         <tbody class="sortable">
@@ -45,13 +45,13 @@
                                 <td class="text-center">{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('frontend.user.invoiceDetail', $item->id) }}" class="btn btn-sm btn-info">
-                                        View
+                                        {{ __('message.view') }}
                                     </a>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="100%" class="ui-state-default text-center">No data for this time period.</td>
+                                <td colspan="100%" class="ui-state-default text-center">{{ __('message.no_data_for_this_time_period') }}</td>
                             </tr>
                         @endforelse
                         </tbody>

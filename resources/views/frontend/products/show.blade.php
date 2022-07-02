@@ -7,12 +7,11 @@
             <div class="container">
                 <div class="banner_content d-md-flex justify-content-between align-items-center">
                     <div class="mb-3 mb-md-0">
-                        <h2>Shop Category</h2>
-                        <p>Very us move be blessed multiply night</p>
+                        <h2>{{ __('message.shop_detail') }}</h2>
                     </div>
                     <div class="page_link">
-                        <a href="{{ route('frontend.sites.index') }}">Home</a>
-                        <a href="{{ route('frontend.products.index') }}">Shop</a>
+                        <a href="{{ route('frontend.sites.index') }}">{{ __('message.home') }}</a>
+                        <a href="{{ route('frontend.products.index') }}">{{ __('message.shop') }}</a>
                     </div>
                 </div>
             </div>
@@ -50,18 +49,18 @@
                         <ul class="list">
                             <li>
                                 <a class="active" href="#">
-                                    <span>Category</span> : {{ $item->category->name }}</a
+                                    <span>{{ __('message.category') }}</span> : {{ $item->category->name }}</a
                                 >
                             </li>
                             <li>
-                                <a href="#"> <span>Availibility</span> : {{ $item->stock_status_name }}</a>
+                                <a href="#"> <span>{{ __('message.availability') }}</span> : {{ $item->stock_status_name }}</a>
                             </li>
                         </ul>
                         {!! $item->content !!}
                         <form action="{{ route('frontend.products.addCart') }}" method="POST">
                             @csrf
                             <div class="product_count">
-                                <label for="qty">Quantity:</label>
+                                <label for="qty">{{ __('message.quantity') }}:</label>
                                 <input name="product_id" type="hidden" value="{{ $item->id }}">
                                 <input
                                     type="text"
@@ -88,7 +87,7 @@
                                 </button>
                             </div>
                             <div class="card_area">
-                                <button type="submit" class="main_btn">Add to Cart</button>
+                                <button type="submit" class="main_btn">{{ __('message.add_to_cart') }}</button>
                             </div>
                         </form>
 

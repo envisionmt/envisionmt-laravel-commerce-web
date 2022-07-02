@@ -7,11 +7,11 @@
             <div class="container">
                 <div class="banner_content d-md-flex justify-content-between align-items-center">
                     <div class="mb-3 mb-md-0">
-                        <h2>Invoice Detail</h2>
+                        <h2>{{ __('message.invoice_detail') }}</h2>
                     </div>
                     <div class="page_link">
-                        <a href="{{ route('frontend.sites.index') }}">Home</a>
-                        <a href="{{ route('frontend.user.invoice') }}">Invoice</a>
+                        <a href="{{ route('frontend.sites.index') }}">{{ __('message.home') }}</a>
+                        <a href="{{ route('frontend.user.invoice') }}">{{ __('message.invoice') }}</a>
                         <a href="{{ route('frontend.user.invoiceDetail', $orderPayment->id) }}">#{{ $orderPayment->order_no }}</a>
                     </div>
                 </div>
@@ -27,21 +27,21 @@
             <div class="row">
                 <div class="col-md-6">
                     <h6>{{ $orderPayment->first_name . ' ' . $orderPayment->last_name }}</h6>
-                    <h6>Address: {{ $orderPayment->address1 }}, {{ $orderPayment->city }}, {{ $orderPayment->post_code }}</h6>
+                    <h6>{{ __('message.address') }}: {{ $orderPayment->address1 }}, {{ $orderPayment->city }}, {{ $orderPayment->post_code }}</h6>
                     <h6>
-                        Phone: {{ $orderPayment->phone }}
+                        {{ __('message.phone') }}: {{ $orderPayment->phone }}
                     </h6>
                 </div>
                 <div class="col-md-3">
                     <h6>
-                        Shipping Fee </h6>
-                    <h6>Free</h6>
+                        {{ __('message.shipping_free') }} </h6>
+                    <h6>{{ __('message.free') }}</h6>
                 </div>
                 <div class="col-md-3">
                     <h6>
-                        Payment method
+                        {{ __('message.payment_method') }}
                     </h6>
-                    <h6>Alipay</h6>
+                    <h6>{{ __('message.alipay') }}</h6>
                 </div>
             </div>
             <div class="cart_inner">
@@ -49,10 +49,10 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">Product</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
+                            <th scope="col">{{ __('message.product') }}</th>
+                            <th scope="col">{{ __('message.price') }}</th>
+                            <th scope="col">{{ __('message.quantity') }}</th>
+                            <th scope="col">{{ __('message.total') }}</th>
                         </tr>
                         </thead>
                         <tbody>

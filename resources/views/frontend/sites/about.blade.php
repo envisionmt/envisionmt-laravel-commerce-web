@@ -8,11 +8,10 @@
                 <div class="banner_content d-md-flex justify-content-between align-items-center">
                     <div class="mb-3 mb-md-0">
                         <h2>About</h2>
-                        <p>Very us move be blessed multiply night</p>
                     </div>
                     <div class="page_link">
-                        <a href="{{ route('frontend.sites.index') }}">Home</a>
-                        <a href="{{ route('frontend.sites.about') }}">About</a>
+                        <a href="{{ route('frontend.sites.index') }}">{{ __('message.home') }}</a>
+                        <a href="{{ route('frontend.sites.about') }}">{{ __('message.about') }}</a>
                     </div>
                 </div>
             </div>
