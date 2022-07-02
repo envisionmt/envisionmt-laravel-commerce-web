@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Products\AddCartRequest;
 use App\Http\Requests\Frontend\Products\CheckoutRequest;
 use App\Http\Requests\Frontend\Products\UpdateCartRequest;
+use App\Models\Delivery;
 use App\Models\OrderPayment;
 use App\Repositories\CategoryRepository;
+use App\Repositories\DeliveryRepository;
 use App\Repositories\OrderPaymentRepository;
 use App\Repositories\ProductRepository;
 use App\Services\CommonService;
@@ -35,6 +37,7 @@ class ProductController extends Controller
     private $commonService;
     private $rsaService;
     private $agent;
+    private $deliveryRepository;
 
     /**
      * Constructor.
@@ -43,6 +46,7 @@ class ProductController extends Controller
      * @param OrderPaymentRepository $orderPaymentRepository
      * @param Agent $agent
      * @param CommonService $commonService
+     * @param DeliveryRepository $deliveryRepository
      * @param RSAService $rsaService
      */
     public function __construct(ProductRepository $productRepository,
@@ -50,6 +54,7 @@ class ProductController extends Controller
                                 OrderPaymentRepository $orderPaymentRepository,
                                 Agent $agent,
                                 CommonService $commonService,
+                                DeliveryRepository $deliveryRepository,
                                 RSAService $rsaService)
     {
         $this->productRepository = $productRepository;
@@ -58,6 +63,7 @@ class ProductController extends Controller
         $this->commonService = $commonService;
         $this->rsaService = $rsaService;
         $this->agent = $agent;
+        $this->deliveryRepository = $deliveryRepository;
     }
 
     /**
@@ -115,7 +121,10 @@ class ProductController extends Controller
     public function cart(Request $request)
     {
         $list = \Cart::content();
-        return view('frontend.products.cart', compact('list'));
+        $shippingDestinations = $this->deliveryRepository->where('type', Delivery::SHIPPING_DESTINATION_TYPE)->orderBy('created_at', 'asc')->get();
+        $deliveryMethods = $this->deliveryRepository->where('type', Delivery::DELIVERY_METHOD_TYPE)->get();
+        $paymentMethods = $this->deliveryRepository->where('type', Delivery::PAYMENT_METHOD_TYPE)->get();
+        return view('frontend.products.cart', compact('list', 'shippingDestinations', 'deliveryMethods', 'paymentMethods'));
     }
 
     public function checkout(Request $request)
