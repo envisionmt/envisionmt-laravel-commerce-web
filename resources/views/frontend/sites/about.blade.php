@@ -23,33 +23,25 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="mb-50">
-                            <img class="img-fluid" src="http://w8.local/img/bg-img/4.9.jpg" alt="">
+                            <img class="img-fluid" src="{{ $aboutTopIntroduction->image }}" alt="">
                         </div>
                     </div>
                 </div>
 
-                <div class="row justify-content-center mt-4">
+                <div class="row mt-4">
                     <!-- Single Benefits Area -->
-                    <div class="col-12 col-sm-4 col-lg text-center">
-                        <div class="mb-50">
-                            <img src="http://w8.local/uploads/-OtAD2acf7pK3zM_pcqsjP1ip3hxcyD5.jpg" alt="">
-                            <h5>NON-TOXIC</h5>
+                    @foreach($serviceIntroductions as $serviceIntroduction)
+                        <div class="col-lg-3 col-md-6">
+                            <div class="single-feature">
+                                <a href="#" class="title">
+                                    <i class="{{ $serviceIntroduction->sub_title }}"></i>
+                                    <h3>{{ $serviceIntroduction->title }}</h3>
+                                </a>
+                                <p>{{ $serviceIntroduction->description }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Single Benefits Area -->
-                    <div class="col-12 col-sm-4 col-lg text-center">
-                        <div class="mb-50">
-                            <img src="http://w8.local/uploads/n0KBraCWuBw_0H2d1BklNfw4gModfrgz.jpg" alt="">
-                            <h5>NATURAL</h5>
-                        </div>
-                    </div>
-                    <!-- Single Benefits Area -->
-                    <div class="col-12 col-sm-4 col-lg text-center">
-                        <div class="mb-50">
-                            <img src="http://w8.local/uploads/6m6bGKk9ZAw58keSFDq8VrOfgaCTukwt.jpg" alt="">
-                            <h5>PURITY</h5>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </section>
@@ -62,22 +54,22 @@
                         <div class="about-us-content">
                             <!-- Section Heading -->
                             <div class="section-heading">
-                                <h2><span>ABOUT</span> US</h2>
+                                <h2>{{ $aboutUsIntroduction->title }}</h2>
                             </div>
                             <p>
-                                We are a professional company that produces a series of agarwood-related products, located in a 121 hectare (330 acre) plantation in southern Malaysia. There are about 200,000 agarwood trees in the plantation. There are many products, complete varieties, high quality, and no chemical additives. We also self-manufactured and processed for wholesale &amp; retailing. The current products mainly include: agarwood oil, agarwood bracelets, we created our own brand, no fakes, reasonable price, small profit, preferential treatment and people.                    </p>
+                                {{ $aboutUsIntroduction->description }}
+                            </p>
                         </div>
                     </div>
 
                     <!-- Famie Video Play -->
                     <div class="col-12 col-md-4 mb-3">
                         <div>
-                            <img src="http://w8.local/uploads/BIoQJuga81uHobvf4PIiVlV8uMw1Ragf.jpg" class="rounded-circle img-fluid" alt="">
-                            <!-- Play Icon -->
+                            <img src="{{ $aboutUsIntroduction->image }}" class="rounded-circle img-fluid" alt="{{ $aboutUsIntroduction->title }}">
                         </div>
                     </div>
                     <div class="col-12 mb-4">
-                        <img class="img-fluid" src="http://w8.local/img/core-img/about.jpg" alt="">
+                        <img class="img-fluid" src="{{ $aboutBottomIntroduction->image }}" alt="">
                     </div>
                 </div>
             </div>

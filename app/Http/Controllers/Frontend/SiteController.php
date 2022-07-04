@@ -153,6 +153,15 @@ class SiteController extends Controller
 
     public function about(Request $request)
     {
-        return view('frontend.sites.about');
+        $serviceIntroductions = $this->introductionTypeRepository->getByColumn('services', 'short_name');
+        $aboutUsIntroduction = $this->introductionTypeRepository->getByColumn('about-us', 'short_name');
+        $aboutBottomIntroduction = $this->introductionTypeRepository->getByColumn('about-bottom', 'short_name');
+        $aboutTopIntroduction = $this->introductionTypeRepository->getByColumn('about-top', 'short_name');
+        return view('frontend.sites.about',[
+            'serviceIntroductions' => $serviceIntroductions->introductions,
+            'aboutUsIntroduction' => $aboutUsIntroduction->introduction,
+            'aboutBottomIntroduction' => $aboutBottomIntroduction->introduction,
+            'aboutTopIntroduction' => $aboutTopIntroduction->introduction,
+        ]);
     }
 }
