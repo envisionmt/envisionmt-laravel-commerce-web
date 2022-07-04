@@ -44,6 +44,7 @@ return [
     'order_request' => 'Order Request*',
     'shop_category' => 'Shop Category*',
     'very_us_move_be_blessed_multiply_night' => 'Very us move be blessed multiply night*',
+    'category' => 'Category*',
     'browse_categories' => 'Browse Categories*',
     'shop_detail' => 'Shop Detail*',
     'add_to_cart' => 'Add to Cart*',

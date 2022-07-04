@@ -45,6 +45,7 @@ return [
     'shop_category' => 'Shop Category',
     'very_us_move_be_blessed_multiply_night' => 'Very us move be blessed multiply night',
     'browse_categories' => 'Browse Categories',
+    'category' => 'Category',
     'shop_detail' => 'Shop Detail',
     'add_to_cart' => 'Add to Cart',
     'availability' => 'Availability',
