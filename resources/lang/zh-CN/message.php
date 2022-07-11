@@ -101,4 +101,6 @@ return [
     'please_confirm_your_password_before_continuing' => 'Please confirm your password before continuing.*',
     'reset_password' => 'Reset password*',
     'send_password_reset_link' => 'Send Password Reset Link*',
+    'privacy_policy' => 'Privacy Policy*',
+    'refund_policy' => 'Refund Policy*'
 ];

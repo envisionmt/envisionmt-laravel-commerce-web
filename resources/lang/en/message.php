@@ -30,7 +30,7 @@ return [
     'subtotal' => 'Subtotal',
     'discount' => 'Discount',
     'ive_read_and_accept_the' => 'I’ve read and accept the',
-    'terms_and_conditions' => 'terms & conditions*',
+    'terms_and_conditions' => 'Terms & conditions',
     'please_accept_with_term_and_condition_before_you_can_order_on_this_website' => 'Please accept with term & condition before you can order on this website.',
     'first_name' => 'First Name',
     'last_name' => 'Last Name',
@@ -101,4 +101,6 @@ return [
     'please_confirm_your_password_before_continuing' => 'Please confirm your password before continuing.',
     'reset_password' => 'Reset password',
     'send_password_reset_link' => 'Send Password Reset Link',
+    'privacy_policy' => 'Privacy Policy',
+    'refund_policy' => 'Refund Policy'
 ];

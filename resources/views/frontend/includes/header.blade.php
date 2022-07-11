@@ -10,7 +10,7 @@
                 <div class="col-lg-7">
                     <div class="float-left">
                         <p>Phone: +01 256 25 235</p>
-                        <p>email: info@eiser.com</p>
+                        <p>Email: jdfintech2022@gmail.com</p>
                     </div>
                 </div>
                 <div class="col-lg-5">
