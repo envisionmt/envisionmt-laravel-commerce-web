@@ -29,7 +29,7 @@ return [
     'subtotal' => '小计',
     'discount' => '折扣',
     'ive_read_and_accept_the' => '我已阅读并接受',
-    'terms_and_conditions' => '条款和条件*',
+    'terms_and_conditions' => '条款和条件',
     'please_accept_with_term_and_condition_before_you_can_order_on_this_website' => '请先接受条款和条件,然后才能在本网站订购。',
     'first_name' => '名字',
     'last_name' => '姓氏',
