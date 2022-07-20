@@ -9,9 +9,8 @@
             <div class="col-lg-6 col-md-6 single-footer-widget">
                 <p><i class="fa fa-map-pin" aria-hidden="true"></i> <span>21-1, Jalan DU 1/2, Taman Damai Utama, 47180 Puchong Selangor, Malaysia</span>
                 </p>
-                <p><i class="fa fa-envelope" aria-hidden="true"></i> <span>jdfintech2022@gmail.com</span>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i> <span>fintechjd@gmail.com</span>
                 </p>
-                <p><i class="fa fa-phone" aria-hidden="true"></i> <span>+60 0380791690</span></p>
             </div>
             <div class="col-lg-3 col-md-6 single-footer-widget">
                 <h4>Quick Links</h4>

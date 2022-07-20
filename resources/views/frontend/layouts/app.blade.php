@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('frontend/img/fevicon.png')}}">
-    <link rel="icon" type="image/png" href="{{asset('frontend/img/fevicon.png')}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('frontend/img/favicon.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('frontend/img/favicon.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>{{ config('app.name') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
     <!-- Shortcut Icon -->
-    <link rel="shortcut icon" href="{{asset('backend/img/favicon.png')}}">
-    <link rel="icon" type="image/ico" href="{{asset('backend/img/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{asset('frontend/img/favicon.png')}}">
+    <link rel="icon" type="image/ico" href="{{asset('frontend/img/favicon.png')}}" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
