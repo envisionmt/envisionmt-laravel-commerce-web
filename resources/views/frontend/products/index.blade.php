@@ -14,7 +14,6 @@
                 <div class="banner_content d-md-flex justify-content-between align-items-center">
                     <div class="mb-3 mb-md-0">
                         <h2>{{ __('message.shop_category') }}</h2>
-                        <p>{{ __('message.very_us_move_be_blessed_multiply_night') }}</p>
                     </div>
                     <div class="page_link">
                         <a href="{{ route('frontend.sites.index') }}">{{ __('message.home') }}</a>
