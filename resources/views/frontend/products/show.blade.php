@@ -30,14 +30,38 @@
                             class="carousel slide"
                             data-ride="carousel"
                         >
+                            <?php
+                            $galleries = [];
+                            if ($item->galleries && !empty(json_decode($item->galleries))) {
+                                $galleries = json_decode($item->galleries);
+                            }
+                            array_unshift($galleries, $item->image);
+                            ?>
+                            <ol class="carousel-indicators">
+                                @foreach($galleries as $key => $image)
+                                    <li
+                                        data-target="#carouselExampleIndicators"
+                                        data-slide-to="{{ $key }}"
+                                        class="{{ $key === 0 ? 'active' : '' }}"
+                                    >
+                                        <img
+                                            src="{{ $image }}"
+                                            alt=""
+                                        />
+                                    </li>
+                                @endforeach
+                            </ol>
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img
-                                        class="d-block w-100"
-                                        src="{{ $item->image }}"
-                                        alt="First slide"
-                                    />
-                                </div>
+                                @foreach($galleries as $key => $image)
+                                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                        <img
+                                            class="d-block w-100"
+                                            src="{{ $image }}"
+                                            alt=""
+                                        />
+                                    </div>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -53,7 +77,8 @@
                                 >
                             </li>
                             <li>
-                                <a href="#"> <span>{{ __('message.availability') }}</span> : {{ $item->stock_status_name }}</a>
+                                <a href="#"> <span>{{ __('message.availability') }}</span>
+                                    : {{ $item->stock_status_name }}</a>
                             </li>
                         </ul>
                         {!! $item->content !!}
