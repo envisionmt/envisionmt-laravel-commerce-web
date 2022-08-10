@@ -1,3 +1,6 @@
+@push('after-scripts')
+    <script src="{{ asset('backend/js/pages/galleries.js') }}"></script>
+@endpush
 @extends('backend.layouts.app')
 
 @section('content')
@@ -100,7 +103,58 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Images</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <form action="{{ route('backend.products.galleries', $item->id) }}" method="POST">
+                                        <div class="list-images">
+                                            <?php
+                                                $galleries = [''];
+                                                if ($item->galleries && !empty(json_decode($item->galleries))) {
+                                                    $galleries = json_decode($item->galleries);
+                                                }
+                                            ?>
+
+                                            @csrf
+                                            @foreach($galleries as $key => $image)
+                                                <div class="input-group-image {{ $key }}">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" data-input="images-{{ $key }}" data-preview="preview-image-{{ $key }}" class="btn btn-primary image-manager">
+                                                                <i class="far fa-image"></i> Choose
+                                                            </button>
+                                                        </div>
+                                                        <input type="text" name="galleries[]" class="form-control"
+                                                               id="images-{{ $key }}" placeholder="Enter image" style="border-right: 0;" value="{{ $image }}">
+                                                        <button type="button" class="btn btn-danger btn-delete-image"
+                                                                style="border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                    <p id="preview-image-{{ $key }}" class="mt-2 mb-3">
+                                                        @if (!empty($image))
+                                                            <img src="{{ $image }}" style="height: 5rem;">
+                                                        @endif
+                                                    </p>
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+                                        <button type="button" class="btn btn-success btn-add-image"><i class="fas fa-plus"></i> Add new image</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>

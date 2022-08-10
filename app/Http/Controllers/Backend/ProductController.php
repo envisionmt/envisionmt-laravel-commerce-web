@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Products\GalleriesRequest;
 use App\Http\Requests\Backend\Products\ProductCreateRequest;
 use App\Http\Requests\Backend\Products\ProductUpdateRequest;
 use App\Models\Product;
@@ -207,5 +208,19 @@ class ProductController extends Controller
         }
 
         return redirect()->route('backend.products.index');
+    }
+
+    public function galleries(GalleriesRequest $request, $id)
+    {
+        try {
+            $attributes = $request->only('galleries');
+            $this->productRepository->update($attributes, $id);
+
+            $request->session()->flash('success', 'The product has been successfully updated.');
+        } catch (Exception $exception) {
+            Log::error($exception);
+            $request->session()->flash('error', 'An error occurred while updating the page.');
+        }
+        return redirect()->route('backend.products.show', $id);
     }
 }

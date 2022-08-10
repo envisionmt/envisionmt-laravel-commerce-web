@@ -50,6 +50,7 @@ class Product extends Model
         'type',
         'package',
         'stock_status',
+        'galleries'
     ];
 
     /**
