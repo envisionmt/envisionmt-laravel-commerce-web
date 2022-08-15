@@ -14,7 +14,7 @@ class AddGalleriesFieldProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->json('galleries');
+            $table->json('galleries')->nullable();
         });
     }
 
