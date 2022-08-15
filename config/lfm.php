@@ -56,6 +56,7 @@ return [
                 'image/png',
                 'image/gif',
                 'image/svg+xml',
+                'image/webp',
                 'application/pdf',
                 'text/plain',
             ],
@@ -70,6 +71,7 @@ return [
                 'image/png',
                 'image/gif',
                 'image/svg+xml',
+                'image/webp'
             ],
         ],
     ],
