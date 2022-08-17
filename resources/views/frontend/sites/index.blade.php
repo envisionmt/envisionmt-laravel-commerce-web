@@ -82,7 +82,7 @@
                                     <h4>{{ $featuredProduct->name }}</h4>
                                 </a>
                                 <div class="mt-3">
-                                    <span class="mr-4">{{ $featuredProduct->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</span>
+                                    <span class="mr-4">{{ $featuredProduct->price }} {{ \App\Models\OrderPayment::USA_CURRENCY }}</span>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
                         <div class="product-img">
                             <img class="img-fluid" src="{{ $hotProduct->image }}" alt="{{ $hotProduct->name }}"/>
                         </div>
-                        <h4>{{ $hotProduct->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</h4>
+                        <h4>{{ $hotProduct->price }} {{ \App\Models\OrderPayment::USA_CURRENCY }}</h4>
 
                         <form action="{{ route('frontend.products.addCart') }}"
                               method="POST">
@@ -169,7 +169,7 @@
                                             <h4>{{ $newProduct->name }}</h4>
                                         </a>
                                         <div class="mt-3">
-                                            <span class="mr-4">{{ $newProduct->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</span>
+                                            <span class="mr-4">{{ $newProduct->price }} {{ \App\Models\OrderPayment::USA_CURRENCY }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                                     <h4>{{ $product->name }}</h4>
                                 </a>
                                 <div class="mt-3">
-                                    <span class="mr-4">{{ $product->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</span>
+                                    <span class="mr-4">{{ $product->price }} {{ \App\Models\OrderPayment::USA_CURRENCY }}</span>
                                 </div>
                             </div>
                         </div>

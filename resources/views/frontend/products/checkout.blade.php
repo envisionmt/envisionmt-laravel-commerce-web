@@ -88,7 +88,7 @@
                                         <a href="#"
                                         >{{ $item->options->name }}
                                             <span class="middle">x {{ $item->qty }}</span>
-                                            <span class="last">{{ $item->qty * $item->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</span>
+                                            <span class="last">{{ $item->qty * $item->price }} {{ \App\Models\OrderPayment::USA_CURRENCY }}</span>
                                         </a>
                                     </li>
                                 @endforeach
@@ -98,7 +98,7 @@
                                 <li>
                                     <a href="#"
                                     >{{ __('message.subtotal') }}
-                                        <span>{{ Cart::subtotal() }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</span>
+                                        <span>{{ Cart::subtotal() }} {{ \App\Models\OrderPayment::USA_CURRENCY }}</span>
                                     </a>
                                 </li>
                                 <li>
@@ -116,7 +116,7 @@
                                 <li>
                                     <a href="#"
                                     >{{ __('message.total') }}
-                                        <span>{{ Cart::total() }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</span>
+                                        <span>{{ Cart::total() }} {{ \App\Models\OrderPayment::USA_CURRENCY }}</span>
                                     </a>
                                 </li>
                             </ul>

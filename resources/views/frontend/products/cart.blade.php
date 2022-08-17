@@ -39,7 +39,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <h5>{{ $item->options->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</h5>
+                                        <h5>{{ $item->options->price }} {{ \App\Models\OrderPayment::USA_CURRENCY }}</h5>
                                     </td>
                                     <td>
                                         <div class="product_count">
@@ -67,7 +67,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <h5>{{ $item->qty * $item->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</h5>
+                                        <h5>{{ $item->qty * $item->price }} {{ \App\Models\OrderPayment::USA_CURRENCY }}</h5>
                                     </td>
                                 </tr>
                             @endforeach
@@ -87,10 +87,10 @@
                                     <div class="shipping_box">
                                         <ul class="list">
                                             <li>
-                                                <a href="#">Flat Rate: 5.00 MYR</a>
+                                                <a href="#">Flat Rate: 5.00 USD</a>
                                             </li>
                                             <li class="active">
-                                                <a href="#">Flat Rate: 10.00 MYR</a>
+                                                <a href="#">Flat Rate: 10.00 USD</a>
                                             </li>
                                         </ul>
                                         <h6>

@@ -65,7 +65,7 @@
                                                 <h4>{{ $item->name }}</h4>
                                             </a>
                                             <div class="mt-3">
-                                                <span class="mr-4">{{ $item->price }} {{ \App\Models\OrderPayment::MALAYSIA_CURRENCY }}</span>
+                                                <span class="mr-4">{{ $item->price }} {{ \App\Models\OrderPayment::USA_CURRENCY }}</span>
                                             </div>
                                         </div>
                                     </div>
